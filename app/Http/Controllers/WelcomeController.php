@@ -20,4 +20,10 @@ class WelcomeController extends Controller
     {
         return view('pages.register');
     }
+
+    public function dashboard()
+    {
+        return view('home');
+    }
+
 }
