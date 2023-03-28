@@ -11,6 +11,16 @@ class WelcomeController extends Controller
         return view('first');
     }
 
+    public function login()
+    {
+        return view('pages.login');
+    }
+
+    public function register()
+    {
+        return view('pages.register');
+    }
+
     public function dashboard()
     {
         return view('home');
