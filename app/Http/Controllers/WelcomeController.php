@@ -11,4 +11,9 @@ class WelcomeController extends Controller
         return view('first');
     }
 
+    public function dashboard()
+    {
+        return view('home');
+    }
+
 }

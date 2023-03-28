@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', 'WelcomeController@index')->name('/');
+Route::get('/dashboard', 'WelcomeController@dashboard')->name('dashboard');
