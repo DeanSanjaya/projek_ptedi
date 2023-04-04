@@ -18,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', 'WelcomeController@index')->name('/');
 Route::get('/dashboard', 'WelcomeController@dashboard')->name('dashboard');
+Route::get('/login','WelcomeController@login')->name('login');
+Route::post('/login', 'WelcomeController@loginsubmit')->name('loginsubmit');
+Route::get('/register','WelcomeController@register')->name('register');
+Route::post('/register', 'WelcomeController@registersubmit')->name('registersubmit');
+Route::get('/logout', 'WelcomeController@logout')->name('logout');

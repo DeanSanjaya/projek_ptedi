@@ -17,6 +17,8 @@
             @include('templates.partials.navbar')
             <!-- End navbar -->
 
+            @include('templates.partials.notification')
+
             <!-- Content -->
             @yield('content')
             <!-- End content -->
