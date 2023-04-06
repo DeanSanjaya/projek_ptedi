@@ -160,15 +160,14 @@ h6 {
 }
 
 @media (max-width: 991px) {
-
-  .navbar .btn{
-    background-color: white;
-    border: none;
-    color: black;
-    text-align: left;
-    padding: 0px;
-    margin-left: 20px;
-  }
+    .navbar .btn {
+        background-color: white;
+        border: none;
+        color: black;
+        text-align: left;
+        padding: 0px;
+        margin-left: 20px;
+    }
     .mobile-nav-toggle {
         display: block;
     }
@@ -1262,7 +1261,52 @@ section {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
 #footer {
+    padding: 0px;
+    margin: 0px;
+}
+
+#footer .bg-1 {
+    background: linear-gradient(
+        135.03deg,
+        rgba(0, 47, 73, 0.08) 0.05%,
+        #360940 100%
+    );
+}
+
+#footer .bg-2 {
+    background: linear-gradient(135.03deg, #f05f57 0.05%, #360940 100%);
+}
+
+#footer .bg-1 .bg-2 .container{
+    color: #fff;
+}
+
+#footer .bg-1 .bg-2 .container i{
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#footer .bg-1 .bg-2 .container .email,
+#footer .bg-1 .bg-2 .container .phone{
+    display: flex;
+}
+
+#footer .bg-1 .bg-2 .container .text{
+    padding: 20px;
+}
+
+#footer .bg-1 .bg-2 .container .text h1{
+    padding-right: 25px;
+}
+
+#footer .bg-1 .bg-2 .container .text .social-links a{
+    color: white;
+}
+
+
+/* #footer {
     background: #fff;
     padding: 0 0 30px 0;
     color: #444444;
@@ -1432,4 +1476,4 @@ section {
         float: none;
         text-align: center;
     }
-}
+} */
