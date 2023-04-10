@@ -51,7 +51,23 @@
             </nav>
             <!-- .navbar -->
         </div>
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i data-feather="alert-circle"></i> <strong> {{ session('success') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
+            </div>
+        @endif
+
+
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i data-feather="alert-circle"></i> <strong> {{ session('error') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
+            </div>
+        @endif
     </header>
+
+
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->

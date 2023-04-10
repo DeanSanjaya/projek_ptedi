@@ -8,6 +8,7 @@
 <script src="{{ asset('assets/dashboard/vendors/jquery.flot/jquery.flot.resize.js') }}"></script>
 <script src="{{ asset('assets/dashboard/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('assets/dashboard/vendors/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/dashboard/vendors/sweetalert2/sweetalert2.min.js') }}"></script>
 <!-- End plugin js for this page -->
 
 <!-- inject:js -->
