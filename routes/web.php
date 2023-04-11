@@ -27,5 +27,5 @@ Route::get('/logout', 'WelcomeController@logout')->name('logout');
 Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::get('/', 'WelcomeController@dashboard')->name('dashboard');
     Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
-
+    Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
 });
