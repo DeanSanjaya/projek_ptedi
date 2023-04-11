@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -51,23 +51,7 @@
             </nav>
             <!-- .navbar -->
         </div>
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i data-feather="alert-circle"></i> <strong> {{ session('success') }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
-            </div>
-        @endif
-
-
-        @if (session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i data-feather="alert-circle"></i> <strong> {{ session('error') }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
-            </div>
-        @endif
     </header>
-
-
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
@@ -91,45 +75,43 @@
     <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
-            <div class="container">
-
+            <div class="container-fluid">
                 <div class="row">
-                    <div
-                        class="col-xl-5 col-lg-6 d-flex justify-content-center video-box align-items-stretch position-relative">
-                        <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
-                    </div>
-
-                    <div
-                        class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                        <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-                        <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed
-                            minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero
-                            laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
-
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-fingerprint"></i></div>
-                            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                excepturi sint occaecati cupiditate non provident</p>
-                        </div>
-
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-gift"></i></div>
-                            <h4 class="title"><a href="">Nemo Enim</a></h4>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium voluptatum deleniti atque</p>
-                        </div>
-
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-atom"></i></div>
-                            <h4 class="title"><a href="">Dine Pad</a></h4>
-                            <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis
-                                odit. Sunt aut deserunt minus aut eligendi omnis</p>
-                        </div>
-
+                    <div class="garis offset-6 col-6 border">
                     </div>
                 </div>
-
+            </div>
+            <div class="row">
+                <div class="left col-6 text-center">
+                    <h3>Control your business with our service</h3>
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla mi in ligula.</h4>
+                </div>
+                <div class="right col-6 ">
+                    <div class="row">
+                        <div class="kiri col-6">
+                            <div class="kotak">
+                                <p class = 'text-center'>Service 1</p>
+                            </div>
+                            <div class="kotak">
+                                <p class = 'text-center'>Service 3</p>
+                            </div>
+                            <div class="kotak">
+                                <p class = 'text-center'>Service 5</p>
+                            </div>
+                        </div>
+                        <div class="kanan col-6 ">
+                            <div class="kotak">
+                                <p class = 'text-center'>Service 2</p>
+                            </div>
+                            <div class="kotak">
+                                <p class = 'text-center'>Service 4</p>
+                            </div>
+                            <div class="kotak">
+                                <p class = 'text-center'>Service 6</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section><!-- End About Section -->
 
