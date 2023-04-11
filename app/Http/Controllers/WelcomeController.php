@@ -37,7 +37,7 @@ class WelcomeController extends Controller
                 return redirect()->route('dashboard');
             } else {
                 request()->session()->flash('success', 'Successfully login');
-                return redirect()->route('/');
+                return redirect()->route('dashboard');
             }
 
             // request()->session()->flash('success', 'Successfully login');
@@ -100,5 +100,13 @@ class WelcomeController extends Controller
         return view('home');
     }
 
+    public function manajemen()
+    {
+        return view('manajemen');
+    }
 
+    public function pemasok()
+    {
+        return view('pages/pemasok');
+    }
 }
