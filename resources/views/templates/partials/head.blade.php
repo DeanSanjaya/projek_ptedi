@@ -21,12 +21,13 @@
 
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
     <!-- End plugin css for this page -->
 
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/sweetalert2/sweetalert2.min.css') }}">
     <!-- endinject -->
 
     <!-- Layout styles -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PembelianController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +24,13 @@ Route::post('/login', 'WelcomeController@loginsubmit')->name('loginsubmit');
 Route::get('/register','WelcomeController@register')->name('register');
 Route::post('/register', 'WelcomeController@registersubmit')->name('registersubmit');
 Route::get('/logout', 'WelcomeController@logout')->name('logout');
+Route::get('/pemasokxxx/{id}','PemasokController@pemasokxxx');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
-    Route::get('/', 'WelcomeController@dashboard')->name('dashboard');
+    Route::get('/main', 'WelcomeController@dashboard')->name('main');
     Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
-    Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
-    Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
-
+    // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
+    // Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
+    Route::resource('pemasok','PemasokController');
+    Route::resource('pembelian','PembelianController');
 });

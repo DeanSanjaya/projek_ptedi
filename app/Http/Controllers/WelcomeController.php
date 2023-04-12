@@ -34,10 +34,10 @@ class WelcomeController extends Controller
             // dd($data);
             if ($data == 'admin') {
                 request()->session()->flash('success', 'Successfully login');
-                return redirect()->route('dashboard');
+                return redirect()->route('main');
             } else {
                 request()->session()->flash('success', 'Successfully login');
-                return redirect()->route('dashboard');
+                return redirect()->route('main');
             }
 
             // request()->session()->flash('success', 'Successfully login');
@@ -105,12 +105,12 @@ class WelcomeController extends Controller
         return view('manajemen');
     }
 
-    public function pembelian(){
-        return view('pages.pembelian');
-    }
+    // public function pembelian(){
+    //     return view('pages.pembelian');
+    // }
 
-    public function pemasok()
-    {
-        return view('pages.pemasok');
-    }
+    // public function pemasok()
+    // {
+    //     return view('pages.pemasok');
+    // }
 }

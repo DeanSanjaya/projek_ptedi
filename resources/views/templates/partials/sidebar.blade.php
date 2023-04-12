@@ -13,7 +13,7 @@
         <ul class="nav">
             <li class="nav-item nav-category">Main</li>
             <li class="nav-item">
-                <a href="{{route('dashboard')}}" class="nav-link">
+                <a href="{{route('main')}}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Dashboard</span>
                 </a>
@@ -47,7 +47,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('pembelian')}}" class="nav-link">
+                <a href="{{route('pembelian.index')}}" class="nav-link">
                     <i class="link-icon" data-feather="shopping-cart"></i>
                     <span class="link-title">Pembelian Stok</span>
                 </a>
@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('pemasok')}}" class="nav-link">
+                <a href="{{route('pemasok.index')}}" class="nav-link">
                     <i class="link-icon" data-feather="truck"></i>
                     <span class="link-title">Daftar Pemasok</span>
                 </a>

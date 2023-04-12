@@ -4,7 +4,7 @@
     <div class="page-content">
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('main') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Pembelian Stok</li>
             </ol>
         </nav>
@@ -18,12 +18,18 @@
                                 <div class="mb-3">
                                     <label class="form-label">Pemasok</label>
                                     <select class="js-example-basic-single form-select" data-width="100%">
-                                        <option value="#">Texas</option>
-                                        <option value="#">New York</option>
-                                        <option value="#">Florida</option>
-                                        <option value="#">Kansas</option>
-                                        <option value="#">Hawaii</option>
+                                        <option value="">Pilih Pemasok</option>
+                                        @foreach ($pemasok as $pemasok)
+                                            <option value="{{ $pemasok->id }}">{{ $pemasok->name }}</option>
+                                        @endforeach
                                     </select>
+                                    {{-- <input type="text" name="pemasok" list="datapemasok">
+                                    <datalist id="datapemasok">
+                                        <option value="">Pilih Pemasok</option>
+                                        @foreach ($pemasok as $pemasok)
+                                            <option value="{{ $pemasok->id }}">{{ $pemasok->name }}</option>
+                                        @endforeach
+                                    </datalist> --}}
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama</label>
@@ -306,4 +312,12 @@
             </div>
         </div> --}}
     </div>
+    <script>
+        $(document).ready(function() {
+            $('select[name="province_id"]').on('change', function() {
+
+            })
+        })
+        
+    </script>
 @endsection
