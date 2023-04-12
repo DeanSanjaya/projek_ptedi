@@ -96,11 +96,7 @@
                 <div class="row">
                     <div class="left col-6 text-center">
                         <h1>Control your business with our service</h1>
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam
-                            a
-                            vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla
-                            mi in
-                            ligula.</h4>
+                        <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla mi in ligula. </h4>
                     </div>
                     <div class="right col-6">
                         <div class="row">
