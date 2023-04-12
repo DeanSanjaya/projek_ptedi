@@ -105,8 +105,12 @@ class WelcomeController extends Controller
         return view('manajemen');
     }
 
+    public function pembelian(){
+        return view('pages.pembelian');
+    }
+
     public function pemasok()
     {
-        return view('pages/pemasok');
+        return view('pages.pemasok');
     }
 }
