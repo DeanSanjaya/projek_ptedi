@@ -64,6 +64,13 @@
                     <span class="link-title">Daftar Pemasok</span>
                 </a>
             </li>
+            <li class="nav-item nav-category">Karyawan</li>
+            <li class="nav-item">
+                <a href="{{route('karyawan.index')}}" class="nav-link">
+                    <i class="link-icon" data-feather="user"></i>
+                    <span class="link-title">Daftar Karyawan</span>
+                </a>
+            </li>
 
             <li class="nav-item nav-category">Components</li>
             <li class="nav-item">
