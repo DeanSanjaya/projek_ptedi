@@ -27,7 +27,6 @@
                             <div class="row">
                                 <div class="col-md-4 pe-md-0">
                                     <div class="auth-side-wrapper">
-
                                     </div>
                                 </div>
                                 <div class="col-md-8 ps-md-0">
@@ -69,7 +68,7 @@
                                             <div>
                                                 <button type="submit"
                                                     class="btn btn-primary text-white me-2 mb-2 mb-md-0">
-                                                    Sign up
+                                                    Login
                                                 </button>
                                             </div>
                                             <a href="{{ route('register') }}" class="d-block mt-3 text-muted">

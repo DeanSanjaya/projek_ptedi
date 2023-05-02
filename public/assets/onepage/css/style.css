@@ -152,6 +152,10 @@ section {
     padding: 7px 0px 10px 40px;
 }
 
+.navbar ul a.btn{
+    color: white;
+}
+
 /**
 * Mobile Navigation 
 */
@@ -177,6 +181,9 @@ section {
     }
     .navbar .btn a{
         padding-left: 20px;
+        color: black;
+    }
+    .navbar ul a.btn{
         color: black;
     }
     .mobile-nav-toggle {
