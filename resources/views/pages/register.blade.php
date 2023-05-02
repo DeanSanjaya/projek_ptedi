@@ -2,7 +2,6 @@
 <html class="no-js" lang="en">
 @include('templates.partials.head')
 
-
 <body>
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
