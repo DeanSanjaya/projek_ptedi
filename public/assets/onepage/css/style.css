@@ -118,8 +118,7 @@ section {
     position: relative;
 }
 
-.navbar a,
-.navbar a:focus {
+.navbar a{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -148,6 +147,11 @@ section {
     background-color: #002f49;
 }
 
+.navbar button a{
+    color: white;
+    padding: 7px 0px 10px 40px;
+}
+
 /**
 * Mobile Navigation 
 */
@@ -170,8 +174,10 @@ section {
         border: none;
         color: black;
         text-align: left;
-        padding: 0px;
-        margin-left: 20px;
+    }
+    .navbar .btn a{
+        padding-left: 20px;
+        color: black;
     }
     .mobile-nav-toggle {
         display: block;

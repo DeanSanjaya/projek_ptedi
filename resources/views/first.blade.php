@@ -48,13 +48,12 @@
                     {{-- <button type="button" class="btn btn-primary">Login</button> --}}
                     @auth
                         @if (Auth::check())
-                            <a href="{{ route('main') }}" style=" color:white;" class="btn btn-primary">Dashboard</a>
+                            <a href="{{ route('main') }}" class="btn">Dashboard</a>
                         @else
-                            <a href="{{ route('logout') }}" style=" color:white;" class="btn btn-primary">Logout</a>
+                            <a href="{{ route('logout') }}" class="btn">Logout</a>
                         @endif
                     @else
-                        <button type="button" class="btn btn-primary p-0"><a href="{{ route('login') }}"
-                                style=" color:white; padding: 7px 0px 10px 40px">Login</a></button>
+                        <button type="button" class="btn p-0"><a href="{{ route('login') }}">Login</a></button>
                         {{-- <a href="{{route('login')}}" style=" color:white; padding-left: 45px" class="btn btn-primary">Login</a> --}}
                     @endauth
                 </ul>
