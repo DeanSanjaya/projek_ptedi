@@ -14,8 +14,8 @@ class PemasokSeeder extends Seeder
     {
         DB::table('pemasoks')->insert([
             [
-            'name'    => 'PT. Surya Kencana',
-            'email'   => 'SuryaKencana@gmail.com',
+            'name'    => 'PT. Indofood',
+            'email'   => 'Indofood@gmail.com',
             'phone'   => '087123456789',
             'address' => 'Sidoarjo',
             // 'status'=>'active'
