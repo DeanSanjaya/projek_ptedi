@@ -243,12 +243,12 @@
                                                             name="volume" required>
                                                     </div>
 
-                                                    <div class="mb-3">
+                                                    {{-- <div class="mb-3">
                                                         <label for="keterangan" class="form-label">Keterangan lainnya
                                                             :</label>
                                                         <input type="text" class="form-control" id="keterangan"
                                                             name="keterangan">
-                                                    </div>
+                                                    </div> --}}
 
                                             </div>
                                             <div class="modal-footer">
@@ -385,12 +385,12 @@
                                                                         name="volume" id="volume"
                                                                         value="{{ $barang->volume }}">
 
-                                                                    <label for=""
+                                                                    {{-- <label for=""
                                                                         class="form-label mt-1">Keterangan
                                                                         :</label>
                                                                     <input type="text" class="form-control"
                                                                         name="keterangan" id="keterangan"
-                                                                        value="{{ $barang->keterangan }}">
+                                                                        value="{{ $barang->keterangan }}"> --}}
 
 
                                                             </div>

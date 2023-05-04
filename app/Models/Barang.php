@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
-    protected $fillable=['id','id_kat','name','volume','keterangan'];
+    protected $fillable=['id','id_kat','name','berat_volume'];
 }
