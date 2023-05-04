@@ -46,5 +46,23 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
    
     Route::resource('pemasok','PemasokController');
     Route::resource('pembelian','PembelianController');
+    Route::resource('karyawan', 'KaryawanController');
+
+    
+
+    // //Karyawan View
+    // Route::get('/karyawan','KaryawanController@index')->name('karyawan.index');
+    // //Karyawan Create
+    // Route::get('/karyawan/create','KaryawanController@create')->name('karyawan.create');
+    // Route::post('/karyawan/store','KaryawanController@store')->name('karyawan.store');
+    // //Karyawan Update
+    // Route::get('/karyawan/store/{id}','KaryawanController@edit')->name('karyawan.edit');
+    // Route::post('/karyawan/update/{id}','KaryawanController@update')->name('karyawan.update');
+    // //karyawan delete
+    // Route::get('/karyawan/delete/{id}','KaryawanController@destroy')->name('karyawan.delete');
+
+
+
     Route::resource('barang','StokbarangController');
+
 });
