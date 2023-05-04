@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('assets/dashboard/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/select2/select2.min.css') }}">
     <!-- endinject -->
 
     <!-- Layout styles -->
@@ -35,4 +36,6 @@
     <!-- End layout styles -->
 
     <link rel="shortcut icon" href="{{ asset('assets/dashboard/images/favicon.png') }}" />
+    {{-- {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+{{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 </head>
