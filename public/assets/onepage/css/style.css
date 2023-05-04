@@ -118,7 +118,7 @@ section {
     position: relative;
 }
 
-.navbar a{
+.navbar a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -147,12 +147,12 @@ section {
     background-color: #002f49;
 }
 
-.navbar button a{
+.navbar button a {
     color: white;
     padding: 7px 0px 10px 40px;
 }
 
-.navbar ul a.btn{
+.navbar ul a.btn {
     color: white;
 }
 
@@ -179,11 +179,11 @@ section {
         color: black;
         text-align: left;
     }
-    .navbar .btn a{
+    .navbar .btn a {
         padding-left: 20px;
         color: black;
     }
-    .navbar ul a.btn{
+    .navbar ul a.btn {
         color: black;
     }
     .mobile-nav-toggle {
@@ -360,6 +360,8 @@ section {
 }
 
 #main #services .body .row p {
+    font-family: "Dosis", sans-serif;
+    font-weight: 1000;
     display: flex;
     margin: auto;
 }
@@ -435,7 +437,22 @@ section {
     background: #601f2d;
     border-radius: 34px;
     height: 68px;
-    transform: scale(.9);
+    transform: scale(0.9);
+}
+
+#main #packages .body .container .bungkus{
+    display: flex;
+    justify-content: space-around;
+}
+
+#main #packages .body .row .kotak h2 {
+    transform: scale(0.8);
+    color: #002f49;
+}
+
+#main #packages .body .row .kotak:hover{
+    transform: scale(1.1);
+    transition: 0.1s;
 }
 
 /*--------------------------------------------------------------

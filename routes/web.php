@@ -46,6 +46,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
    
     Route::resource('pemasok','PemasokController');
     Route::resource('pembelian','PembelianController');
+    Route::get('/profile','WelcomeController@profile') -> name('profile');
+
     Route::resource('karyawan', 'KaryawanController');
 
     
