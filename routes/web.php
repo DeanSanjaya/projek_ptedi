@@ -33,4 +33,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     // Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
     Route::resource('pemasok','PemasokController');
     Route::resource('pembelian','PembelianController');
+    Route::get('/profile','WelcomeController@profile') -> name('profile');
 });

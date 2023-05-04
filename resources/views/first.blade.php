@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/onepage/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/onepage/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/onepage/img/edi.jpg') }}" rel="icon">
+    <link href="{{ asset('assets/onepage/img/edi.jpg') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -104,10 +104,10 @@
                         <div class="row">
                             <div class="kiri col-6">
                                 <div class="kotak">
-                                    <p class='text-center'>Service 1</p>
+                                    <p class='text-center'>Manajemen Stok</p>
                                 </div>
                                 <div class="kotak">
-                                    <p class='text-center'>Service 3</p>
+                                    <p class='text-center'>Produksi Stok</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Service 5</p>
@@ -115,10 +115,10 @@
                             </div>
                             <div class="kanan col-6">
                                 <div class="kotak">
-                                    <p class='text-center'>Service 2</p>
+                                    <p class='text-center'>Pembelian Stok</p>
                                 </div>
                                 <div class="kotak">
-                                    <p class='text-center'>Service 4</p>
+                                    <p class='text-center'>Daftar Pemasok</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Service 6</p>
@@ -143,18 +143,35 @@
                 <h2 class="text-center p-5">Let’s choose our packages with our best price</h2>
             </div>
             <div class="body container-fluid">
-                <div class="row">
-                    <div class="col-lg-2 offset-lg-2 col-8 offset-2">
-                        <div class="kotak"></div>
-                        <div class="tombol"></div>
-                    </div>
-                    <div class="col-lg-2 offset-lg-1 col-8 offset-2">
-                        <div class="kotak"></div>
-                        <div class="tombol"></div>
-                    </div>
-                    <div class="col-lg-2 offset-lg-1 col-8 offset-2">
-                        <div class="kotak"></div>
-                        <div class="tombol"></div>
+                <div class="container">
+                    <div class="bungkus row">
+                        <div class="col-lg-3">
+                            <div class="kotak">
+                                <div class="py-3 mx-3">
+                                    <h2 class="text-center">Basic</h2>
+                                    <p class="text-center"> Usaha kecil yang membutuhkan kemudahan operasional lengkap </p>
+                                </div>
+                            </div>
+                            <div class="tombol"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="kotak">
+                                <div class="py-3 mx-3">
+                                    <h2 class="text-center">Business</h2>
+                                    <p class="text-center">Untuk usaha berkembang yang membutuhkan fitur lengkap</p>
+                                </div>
+                            </div>
+                            <div class="tombol"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="kotak">
+                                <div class="py-3 mx-3">
+                                    <h2 class="text-center">Professional</h2>
+                                    <p class="text-center">Untuk usaha maju yang membutuhkan fitur otomasi</p>
+                                </div>
+                            </div>
+                            <div class="tombol"></div>
+                        </div>
                     </div>
                 </div>
             </div>
