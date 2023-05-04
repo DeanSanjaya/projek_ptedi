@@ -24,16 +24,31 @@ Route::post('/login', 'WelcomeController@loginsubmit')->name('loginsubmit');
 Route::get('/register','WelcomeController@register')->name('register');
 Route::post('/register', 'WelcomeController@registersubmit')->name('registersubmit');
 Route::get('/logout', 'WelcomeController@logout')->name('logout');
-Route::get('/pemasokxxx/{id}','PemasokController@pemasokxxx');
+Route::get('/search_kategori','StokbarangController@search_kategori')->name('search_kategori');
+Route::get('/kategori_ip/{id}','StokbarangController@kategori_ip');
+Route::get('/pemasokip/{id}','PemasokController@pemasokip');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::get('/main', 'WelcomeController@dashboard')->name('main');
-    Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
+    // Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
     // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
     // Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
+    
+    Route::post('/kategori','StokbarangController@kategori_store')->name('kategori_store');
+    Route::post('/kategori/edit','StokbarangController@kategori_edit')->name('kategori.edit');
+    Route::post('/kategori/destroy/{id}','StokbarangController@kategori_destroy')->name('kategori.destroy');
+
+    Route::post('/merk','StokbarangController@merkbarang_store')->name('merkbarang_store');
+    Route::post('/merk/edit','StokbarangController@merkbarang_edit')->name('merkbarang.edit');
+    Route::post('/merk/destroy/{id}','StokbarangController@merkbarang_destroy')->name('merkbarang.destroy');
+
+    
+   
     Route::resource('pemasok','PemasokController');
     Route::resource('pembelian','PembelianController');
     Route::resource('karyawan', 'KaryawanController');
+
+    
 
     // //Karyawan View
     // Route::get('/karyawan','KaryawanController@index')->name('karyawan.index');
@@ -46,5 +61,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     // //karyawan delete
     // Route::get('/karyawan/delete/{id}','KaryawanController@destroy')->name('karyawan.delete');
 
+
+
+    Route::resource('barang','StokbarangController');
 
 });

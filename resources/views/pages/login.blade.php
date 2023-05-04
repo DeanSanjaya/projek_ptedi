@@ -2,16 +2,16 @@
 <html class="no-js" lang="en">
 @include('templates.partials.head')
 
-@if(session('success'))
+@if (session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i data-feather="alert-circle"></i> <strong> {{session('success')}}</strong> 
+        <i data-feather="alert-circle"></i> <strong> {{ session('success') }}</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
     </div>
 @endif
 
-@if(session('error'))
+@if (session('error'))
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <i data-feather="alert-circle"></i> <strong> {{session('error')}}</strong> 
+        <i data-feather="alert-circle"></i> <strong> {{ session('error') }}</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
     </div>
 @endif
@@ -21,14 +21,12 @@
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
             <div class="page-content d-flex align-items-center justify-content-center">
-
                 <div class="row w-100 mx-0 auth-page">
                     <div class="col-md-8 col-xl-6 mx-auto">
                         <div class="card">
                             <div class="row">
                                 <div class="col-md-4 pe-md-0">
                                     <div class="auth-side-wrapper">
-
                                     </div>
                                 </div>
                                 <div class="col-md-8 ps-md-0">
@@ -70,7 +68,7 @@
                                             <div>
                                                 <button type="submit"
                                                     class="btn btn-primary text-white me-2 mb-2 mb-md-0">
-                                                    Sign up
+                                                    Login
                                                 </button>
                                             </div>
                                             <a href="{{ route('register') }}" class="d-block mt-3 text-muted">

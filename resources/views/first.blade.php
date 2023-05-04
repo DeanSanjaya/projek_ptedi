@@ -47,15 +47,15 @@
                     <li><a class="nav-link scrollto" href="#footer">Contact Us</a></li>
                     {{-- <button type="button" class="btn btn-primary">Login</button> --}}
                     @auth
-                    @if (Auth::check())
-                        <a href="{{route('main')}}"  style=" color:white;" class="btn btn-primary">Dashboard</a>
+                        @if (Auth::check())
+                            <a href="{{ route('main') }}" class="btn">Dashboard</a>
+                        @else
+                            <a href="{{ route('logout') }}" class="btn">Logout</a>
+                        @endif
                     @else
-                        <a href="{{route('logout')}}"  style=" color:white;" class="btn btn-primary">Logout</a>
-                    @endif
-                @else
-                    <button type="button" class="btn btn-primary p-0"><a href="{{route('login')}}" style=" color:white; padding: 7px 0px 10px 40px" >Login</a></button>
-                    {{-- <a href="{{route('login')}}" style=" color:white; padding-left: 45px" class="btn btn-primary">Login</a> --}}
-                @endauth
+                        <button type="button" class="btn p-0"><a href="{{ route('login') }}">Login</a></button>
+                        {{-- <a href="{{route('login')}}" style=" color:white; padding-left: 45px" class="btn btn-primary">Login</a> --}}
+                    @endauth
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -94,15 +94,13 @@
             </div>
             <div class="body container">
                 <div class="row">
-                    <div class="left col-6 text-center">
+                    <div class="left col-lg-6 text-center">
                         <h1>Control your business with our service</h1>
                         <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam
-                            a
-                            vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla
-                            mi in
-                            ligula.</h4>
+                            a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla
+                            mi in ligula. </h4>
                     </div>
-                    <div class="right col-6">
+                    <div class="right col-lg-6">
                         <div class="row">
                             <div class="kiri col-6">
                                 <div class="kotak">
@@ -130,8 +128,8 @@
                     </div>
                 </div>
             </div>
-
-        </section><!-- End Services Section -->
+        </section>
+        <!-- End Services Section -->
 
         {{-- Start Packages --}}
         <section id="packages" class="packages">
@@ -145,20 +143,18 @@
                 <h2 class="text-center p-5">Let’s choose our packages with our best price</h2>
             </div>
             <div class="body container-fluid">
-                <div class="atas row">
-                    <div class="kotak col-2 offset-2">
+                <div class="row">
+                    <div class="col-lg-2 offset-lg-2 col-8 offset-2">
+                        <div class="kotak"></div>
+                        <div class="tombol"></div>
                     </div>
-                    <div class="kotak col-2 offset-1">
+                    <div class="col-lg-2 offset-lg-1 col-8 offset-2">
+                        <div class="kotak"></div>
+                        <div class="tombol"></div>
                     </div>
-                    <div class="kotak col-2 offset-1">
-                    </div>
-                </div>
-                <div class="bawah row">
-                    <div class="tombol col-2 offset-2">
-                    </div>
-                    <div class="tombol col-2 offset-1">
-                    </div>
-                    <div class="tombol col-2 offset-1">
+                    <div class="col-lg-2 offset-lg-1 col-8 offset-2">
+                        <div class="kotak"></div>
+                        <div class="tombol"></div>
                     </div>
                 </div>
             </div>

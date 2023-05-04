@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pemasok;
+use App\Models\Kategori;
 
 class PemasokController extends Controller
 {
@@ -113,7 +114,7 @@ class PemasokController extends Controller
         return redirect()->route('pemasok.index');
     }
 
-    public function pemasokxxx($id)
+    public function pemasokip($id)
     {
         $pemasok = Pemasok::findorFail($id);
         return response()->json(['name'=>$pemasok->name, 'phone' => $pemasok->phone],200);
