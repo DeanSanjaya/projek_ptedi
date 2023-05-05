@@ -49,6 +49,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::resource('pembelian','PembelianController');
     Route::resource('karyawan', 'KaryawanController');
     Route::resource('barang','StokbarangController');
+    Route::resource('produksi','ProduksiController');
 
     
 
