@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/apps/chat.html" class="nav-link">
+                <a href="{{route('produksi.index')}}" class="nav-link">
                     <i class="link-icon" data-feather="plus-square"></i>
                     <span class="link-title">Produksi Stok</span>
                 </a>
