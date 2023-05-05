@@ -4,7 +4,7 @@
     <div class="page-content">
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('main') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('main') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Pembelian Stok</li>
             </ol>
         </nav>
@@ -324,6 +324,11 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <input class="btn btn-primary" type="submit" value="Submit">
+                            </fieldset>
+                        </form>
+
                                 <div class="mb-3">
                                     <div class="row">
                                         <div class="col-6">
@@ -425,6 +430,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

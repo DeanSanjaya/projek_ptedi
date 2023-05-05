@@ -105,6 +105,11 @@ class WelcomeController extends Controller
         return view('manajemen');
     }
 
+    public function profile()
+    {
+        return view ('pages.profile.index');
+    }
+
     // public function pembelian(){
     //     return view('pages.pembelian');
     // }
