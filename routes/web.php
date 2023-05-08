@@ -31,6 +31,7 @@ Route::get('/pemasokip/{id}','PemasokController@pemasokip');
 Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::get('/main', 'WelcomeController@dashboard')->name('main');
     Route::get('/profile','WelcomeController@profile') -> name('profile');
+    Route::get('/profile/email','WelcomeController@email') -> name('email');
     // Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
     // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
     // Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
