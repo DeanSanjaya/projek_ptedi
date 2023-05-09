@@ -30,6 +30,8 @@ Route::get('/pemasokip/{id}','PemasokController@pemasokip');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::get('/main', 'WelcomeController@dashboard')->name('main');
+    Route::get('/profile','WelcomeController@profile') -> name('profile');
+    Route::get('/profile/email','WelcomeController@email') -> name('email');
     // Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
     // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
     // Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
@@ -46,6 +48,24 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
    
     Route::resource('pemasok','PemasokController');
     Route::resource('pembelian','PembelianController');
+    Route::resource('karyawan', 'KaryawanController');
     Route::resource('barang','StokbarangController');
     Route::resource('produksi','ProduksiController');
+
+    
+
+    // //Karyawan View
+    // Route::get('/karyawan','KaryawanController@index')->name('karyawan.index');
+    // //Karyawan Create
+    // Route::get('/karyawan/create','KaryawanController@create')->name('karyawan.create');
+    // Route::post('/karyawan/store','KaryawanController@store')->name('karyawan.store');
+    // //Karyawan Update
+    // Route::get('/karyawan/store/{id}','KaryawanController@edit')->name('karyawan.edit');
+    // Route::post('/karyawan/update/{id}','KaryawanController@update')->name('karyawan.update');
+    // //karyawan delete
+    // Route::get('/karyawan/delete/{id}','KaryawanController@destroy')->name('karyawan.delete');
+
+
+
+
 });

@@ -11,8 +11,8 @@
     <title>ERPEDII</title>
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/onepage/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/onepage/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/onepage/img/edi.jpg') }}" rel="icon">
+    <link href="{{ asset('assets/onepage/img/edi.jpg') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -49,13 +49,13 @@
                     {{-- <button type="button" class="btn btn-primary">Login</button> --}}
                     @auth
                         @if (Auth::check())
-                            <a href="{{ route('main') }}" style=" color:white;" class="btn btn-primary">Dashboard</a>
+
+                            <a href="{{ route('main') }}" class="btn">Dashboard</a>
                         @else
-                            <a href="{{ route('logout') }}" style=" color:white;" class="btn btn-primary">Logout</a>
+                            <a href="{{ route('logout') }}" class="btn">Logout</a>
                         @endif
                     @else
-                        <button type="button" class="btn btn-primary p-0"><a href="{{ route('login') }}"
-                                style=" color:white; padding: 7px 0px 10px 40px">Login</a></button>
+                        <button type="button" class="btn p-0"><a href="{{ route('login') }}">Login</a></button>
                         {{-- <a href="{{route('login')}}" style=" color:white; padding-left: 45px" class="btn btn-primary">Login</a> --}}
                     @endauth
                 </ul>
@@ -74,7 +74,7 @@
                     <h1>A <span class="better">BETTER</span> WAY TO GROW YOUR CREATIVE <span
                             class="bisnis">BUSINESS</span></h1>
                     <h2>Manage your business with application to get faster and better </h2>
-                    <div><a href="#about" class="btn-get-started scrollto">Get Started</a></div>
+                    <div><a href="#package" class="btn-get-started scrollto">Get Started</a></div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img">
                     <img src="{{ asset('assets/onepage/img/bisnis.png ') }}" class="img-fluid" alt="computer">
@@ -96,22 +96,20 @@
             </div>
             <div class="body container">
                 <div class="row">
-                    <div class="left col-6 text-center">
+                    <div class="left col-lg-6 text-center">
                         <h1>Control your business with our service</h1>
                         <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam
-                            a
-                            vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla
-                            mi in
-                            ligula.</h4>
+                            a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla
+                            mi in ligula. </h4>
                     </div>
-                    <div class="right col-6">
+                    <div class="right col-lg-6">
                         <div class="row">
                             <div class="kiri col-6">
                                 <div class="kotak">
-                                    <p class='text-center'>Service 1</p>
+                                    <p class='text-center'>Manajemen Stok</p>
                                 </div>
                                 <div class="kotak">
-                                    <p class='text-center'>Service 3</p>
+                                    <p class='text-center'>Produksi Stok</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Service 5</p>
@@ -119,10 +117,10 @@
                             </div>
                             <div class="kanan col-6">
                                 <div class="kotak">
-                                    <p class='text-center'>Service 2</p>
+                                    <p class='text-center'>Pembelian Stok</p>
                                 </div>
                                 <div class="kotak">
-                                    <p class='text-center'>Service 4</p>
+                                    <p class='text-center'>Daftar Pemasok</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Service 6</p>
@@ -132,8 +130,8 @@
                     </div>
                 </div>
             </div>
-
-        </section><!-- End Services Section -->
+        </section>
+        <!-- End Services Section -->
 
         {{-- Start Packages --}}
         <section id="packages" class="packages">
@@ -147,20 +145,35 @@
                 <h2 class="text-center p-5">Let’s choose our packages with our best price</h2>
             </div>
             <div class="body container-fluid">
-                <div class="atas row">
-                    <div class="kotak col-2 offset-2">
-                    </div>
-                    <div class="kotak col-2 offset-1">
-                    </div>
-                    <div class="kotak col-2 offset-1">
-                    </div>
-                </div>
-                <div class="bawah row">
-                    <div class="tombol col-2 offset-2">
-                    </div>
-                    <div class="tombol col-2 offset-1">
-                    </div>
-                    <div class="tombol col-2 offset-1">
+                <div class="container">
+                    <div class="bungkus row">
+                        <div class="col-lg-3">
+                            <div class="kotak">
+                                <div class="py-3 mx-3">
+                                    <h2 class="text-center">Basic</h2>
+                                    <p class="text-center"> Usaha kecil yang membutuhkan kemudahan operasional lengkap </p>
+                                </div>
+                            </div>
+                            <div class="tombol"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="kotak">
+                                <div class="py-3 mx-3">
+                                    <h2 class="text-center">Business</h2>
+                                    <p class="text-center">Untuk usaha berkembang yang membutuhkan fitur lengkap</p>
+                                </div>
+                            </div>
+                            <div class="tombol"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="kotak">
+                                <div class="py-3 mx-3">
+                                    <h2 class="text-center">Professional</h2>
+                                    <p class="text-center">Untuk usaha maju yang membutuhkan fitur otomasi</p>
+                                </div>
+                            </div>
+                            <div class="tombol"></div>
+                        </div>
                     </div>
                 </div>
             </div>
