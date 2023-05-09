@@ -25,7 +25,7 @@ class CreateBarangsTable extends Migration
             $table->string('jumlah_kecil')->nullable();
             $table->string('jumlah_kecil_deskripsi')->nullable();
             $table->string('harga_jual')->nullable();
-            // $table->string('keterangan')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

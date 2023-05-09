@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produksi extends Model
 {
-    // protected $fillable=['id','name','email','phone','address'];
+    protected $fillable=['id','bahan','row','id_barang','jumlah','jumlah_deskripsi','created_by'];
 }

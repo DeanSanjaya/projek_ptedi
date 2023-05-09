@@ -8,6 +8,8 @@ use App\Models\Kategori;
 use App\Models\Pembelian;
 use App\Models\Barang;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PembelianController extends Controller
 {
@@ -20,7 +22,7 @@ class PembelianController extends Controller
     {
         $pemasoks = Pemasok::orderBy('id', 'DESC')->get();
         $kategoris = Kategori::orderBy('id', 'ASC')->get();
-        $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'kategoris.id AS id_kat', 'barangs.berat_volume', 'barangs.keterangan')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->orderBy('barangs.id', 'ASC')->get();
+        $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'kategoris.id AS id_kat', 'barangs.berat_volume')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->orderBy('barangs.id', 'ASC')->get();
         $pembelians = DB::table('pembelians')->select('pembelians.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'pembelians.berat_volume', 'pembelians.jumlah', 'pembelians.deskripsijumlah', 'pembelians.desk_b_v', 'pembelians.hargabeli', 'pembelians.totalbeli', 'pemasoks.name AS pemasokname')->join('barangs', 'pembelians.id_brng', '=', 'barangs.id')->join('kategoris', 'pembelians.id_kat', '=', 'kategoris.id')->join('pemasoks', 'pemasoks.id', '=', 'pembelians.id_pemasok')->orderBy('pembelians.id', 'ASC')->get();
         return view('pages.pembelian', compact('pemasoks', 'barangs', 'kategoris', 'pembelians'));
     }
@@ -49,7 +51,7 @@ class PembelianController extends Controller
         //     'address' => 'required|string|min:3|max:255',
         //     'email' => 'email|min:3|max:255',
         // ]);
-
+        $user = Auth::user();
 
         $status = Pembelian::create([
             'id_pemasok'    => $request->id_pemasok,
@@ -61,6 +63,7 @@ class PembelianController extends Controller
             'desk_b_v'      => $request->satuanberat,
             'hargabeli'     => $request->harga,
             'totalbeli'     => $request->total,
+            'created_by'    => $user->name,
         ]);
 
         $stoklama = Barang::where('id', $request->merk)->select('Jumlah_besar')->value('Jumlah_besar');
@@ -70,6 +73,7 @@ class PembelianController extends Controller
             'jumlah_besar_deskripsi' => $request->wadah,
             'jumlah_kecil'           => $request->berat,
             'jumlah_kecil_deskripsi' => $request->satuanberat,
+            'updated_by'             => $user->name,
         ]);
 
         // dd($status);
@@ -131,7 +135,7 @@ class PembelianController extends Controller
         // $jmlhbd = Pembelian::where('id', $id)->select('jumlah_besar_deskripsi')->value('jumlah_besar_deskripsi');
         // $jmlhk = Pembelian::where('id', $id)->select('jumlah_kecil')->value('jumlah_kecil');
         // $jmlhkd = Pembelian::where('id', $id)->select('jumlah_kecil_deskripsi')->value('jumlah_kecil_deskripsi');
-        $stok = Barang::where('id', $id_barang)->update([
+        Barang::where('id', $id_barang)->update([
             'jumlah_besar'           => $jmlhb - $request->jumlah_besar,
             // 'jumlah_besar_deskripsi' => null,
             // 'jumlah_kecil'           => $request->berat,

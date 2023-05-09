@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pemasok;
 use App\Models\Kategori;
+use Illuminate\Support\Facades\Auth;
 
 class PemasokController extends Controller
 {

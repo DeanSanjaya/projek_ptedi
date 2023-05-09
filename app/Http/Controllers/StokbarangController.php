@@ -11,6 +11,7 @@ use App\Models\Pembelian;
 use Illuminate\Support\Facades\DB;
 use JavaScript;
 use Laracasts\Utilities\JavaScript\Transformers\Transformer;
+use Illuminate\Support\Facades\Auth;
 
 class StokbarangController extends Controller
 {
@@ -30,13 +31,13 @@ class StokbarangController extends Controller
         $pemasok = Pemasok::orderBy('name', 'ASC')->get();
         $kategoris = Kategori::orderBy('id', 'ASC')->get();
         // $barangs = Barang::orderBy('name', 'ASC')->get();
-        $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'kategoris.id AS id_kat', 'barangs.berat_volume AS volume', 'barangs.keterangan')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->orderBy('barangs.id', 'ASC')->get();
+        $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'kategoris.id AS id_kat', 'barangs.berat_volume AS volume')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->orderBy('barangs.id', 'ASC')->get();
         // $stock = DB::table('barangs')->select('barangs.id AS id','barangs.name AS barangname','kategoris.name AS kategoriname','kategoris.id AS id_kat','barangs.volume','barangs.keterangan','stokbarangs.id AS id_stok', 'stokbarangs.jumlah', 'stokbarangs.hargajual')->join('kategoris','barangs.id_kat','=','kategoris.id')->join('stokbarangs','stokbarangs.id_brng','=','barangs.id')->orderBy('barangs.id', 'ASC')->get();
         // $stocks = DB::table('barangs')->select('barangs.id AS id', 'barangs.name', 'barangs.harga_jual', 'barangs.berat_volume AS volume', 'pembelians.jumlah', 'pembelians.deskripsijumlah', 'pembelians.berat_volume', 'pembelians.desk_b_v', 'pembelians.hargabeli', 'pembelians.totalbeli')->join('pembelians', 'barangs.id', '=', 'pembelians.id_brng')->orderBy('barangs.id', 'ASC')->get();
-        $stocks = DB::table("barangs")->select('name','stok','stok_deskripsi','harga_jual','berat_volume')->where('stok','>',0)->where('harga_jual','>',0)->get();
+        $stocks = DB::table("barangs")->select('name', 'stok', 'stok_deskripsi', 'harga_jual', 'berat_volume')->where('stok', '>', 0)->where('harga_jual', '>', 0)->get();
         // $pembelians = DB::table('pembelians')->select('pembelians.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'pembelians.berat_volume', 'pembelians.jumlah', 'pembelians.deskripsijumlah', 'pembelians.desk_b_v', 'pembelians.hargabeli', 'pembelians.totalbeli', 'pemasoks.name AS pemasokname')->join('barangs', 'pembelians.id_brng', '=', 'barangs.id')->join('kategoris', 'pembelians.id_kat', '=', 'kategoris.id')->join('pemasoks', 'pemasoks.id', '=', 'pembelians.id_pemasok')->orderBy('pembelians.id', 'ASC')->get();
         // $gudangs = DB::table('barangs')->select('barangs.id AS id','pembelians.id AS id_pem', 'pemasoks.id AS id_pemasok', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'barangs.jumlah_besar', 'barangs.jumlah_besar_deskripsi', 'barangs.jumlah_kecil', 'barangs.jumlah_kecil_deskripsi','pemasoks.name AS pemasokname')->join('barangs', 'pembelians.id_brng', '=', 'barangs.id')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->join('pemasoks', 'pemasoks.id', '=', 'pembelians.id_pemasok')->orderBy('barangs.id', 'ASC')->get();
-        $gudangs = DB::table('barangs')->select('barangs.id AS id','kategoris.id AS id_kat' ,'barangs.name AS barangname','kategoris.name AS kategoriname', 'barangs.jumlah_besar', 'barangs.jumlah_besar_deskripsi', 'barangs.jumlah_kecil', 'barangs.jumlah_kecil_deskripsi' )->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->where('jumlah_besar','>',0)->get();
+        $gudangs = DB::table('barangs')->select('barangs.id AS id', 'kategoris.id AS id_kat', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'barangs.jumlah_besar', 'barangs.jumlah_besar_deskripsi', 'barangs.jumlah_kecil', 'barangs.jumlah_kecil_deskripsi')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->where('jumlah_besar', '>', 0)->get();
         return view('pages.stokbarang.index', compact('pemasok', 'kategoris', 'barangs', 'gudangs', 'stocks'));
     }
 
@@ -62,11 +63,13 @@ class StokbarangController extends Controller
     {
         $stoklama = Barang::where('id', $request->merk)->select('stok')->value('stok');
         $jumlah_besar = Barang::where('id', $request->merk)->select('jumlah_besar')->value('jumlah_besar');
+        $user = Auth::user();
         $stok = Barang::where('id', $request->merk)->update([
             'stok' => $stoklama + $request->stok,
             'stok_deskripsi' => $request->desk_b_v,
             'harga_jual' => $request->hargajual,
             'jumlah_besar' => $jumlah_besar - $request->jualwadah,
+            'updated_by'    => $user->name,
         ]);
 
         // $jumlah
@@ -196,31 +199,23 @@ class StokbarangController extends Controller
         //     'name' => 'string|min:3|max:255|required',
         //     'volume' => 'numeric|min:1|required',
         // ]);
+        $user = Auth::user();
 
-        $merk = $request->name;
-        // $id_kat = $request->id_kat;
-        // $volume = $request->volume;
-        $namalama = DB::table('barangs')->where('name', 'like', "%" . $merk . "%")->get();
-        // dd($merk,$id_kat, $namalama, $volume);
+        $status = Barang::create([
+            'id_kat' => $request->id_kat,
+            'name' => $request->name,
+            'berat_volume' => $request->volume,
+            'updated_by' => $user->name,
+        ]);
+        //     $data = $request->all();
+        // dd($request->berat_volume);
 
-        if (count($namalama) > 0) {
-            request()->session()->flash('error', 'Name is Exist');
-            return redirect()->route('barang.index');
+        if ($status) {
+            request()->session()->flash('success', 'Merk Barang successfully added');
         } else {
-            // $data = $request->all();
-            $status = Barang::create([
-                'id_kat' => $request->id_kat,
-                'name' => $request->name,
-                'berat_volume' => $request->volume,
-                'keterangan' => $request->keterangan,
-            ]);
-            if ($status) {
-                request()->session()->flash('success', 'Merk Barang successfully added');
-            } else {
-                request()->session()->flash('error', 'Error occurred, Please try again!');
-            }
-            return redirect()->route('barang.index');
+            request()->session()->flash('error', 'Error occurred, Please try again!');
         }
+        return redirect()->route('barang.index');
     }
 
     public function merkbarang_edit(Request $request)
@@ -246,7 +241,7 @@ class StokbarangController extends Controller
             'id_kat' => $id_kat,
             'name' => $request->name,
             'berat_volume' => $request->volume,
-            'keterangan' => $request->keterangan,
+            // 'keterangan' => $request->keterangan,
         ]);
         if ($status) {
             request()->session()->flash('success', 'Merk Barang successfully edited');

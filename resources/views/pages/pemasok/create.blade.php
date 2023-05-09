@@ -17,6 +17,7 @@
                         <form class="cmxform" id="signupForm" method="post" action="{{ route('pemasok.store') }}">
                             @csrf
                             <div class="mb-3">
+                                <input type="hidden" name="created_by" id="created_by" value="{{auth::user()->name}}">
                                 <label for="name" class="form-label">Nama</label>
                                 <input id="name" class="form-control @error('name') is-invalid @enderror"
                                     name="name" type="text" value="{{ old('name') }}"

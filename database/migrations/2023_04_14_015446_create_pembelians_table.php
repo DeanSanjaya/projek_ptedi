@@ -25,6 +25,7 @@ class CreatePembeliansTable extends Migration
             $table->string('desk_b_v')->nullable();
             $table->string('hargabeli')->nullable();
             $table->string('totalbeli')->nullable();
+            $table->string('created_by')->nullable();
             $table->timestamps();
         });
     }

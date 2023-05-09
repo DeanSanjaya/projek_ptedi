@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
 
     <title>ERPEDII</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
 
     <!-- Favicons -->
     <link href="{{ asset('assets/onepage/img/favicon.png') }}" rel="icon">
@@ -47,15 +48,16 @@
                     <li><a class="nav-link scrollto" href="#footer">Contact Us</a></li>
                     {{-- <button type="button" class="btn btn-primary">Login</button> --}}
                     @auth
-                    @if (Auth::check())
-                        <a href="{{route('main')}}"  style=" color:white;" class="btn btn-primary">Dashboard</a>
+                        @if (Auth::check())
+                            <a href="{{ route('main') }}" style=" color:white;" class="btn btn-primary">Dashboard</a>
+                        @else
+                            <a href="{{ route('logout') }}" style=" color:white;" class="btn btn-primary">Logout</a>
+                        @endif
                     @else
-                        <a href="{{route('logout')}}"  style=" color:white;" class="btn btn-primary">Logout</a>
-                    @endif
-                @else
-                    <button type="button" class="btn btn-primary p-0"><a href="{{route('login')}}" style=" color:white; padding: 7px 0px 10px 40px" >Login</a></button>
-                    {{-- <a href="{{route('login')}}" style=" color:white; padding-left: 45px" class="btn btn-primary">Login</a> --}}
-                @endauth
+                        <button type="button" class="btn btn-primary p-0"><a href="{{ route('login') }}"
+                                style=" color:white; padding: 7px 0px 10px 40px">Login</a></button>
+                        {{-- <a href="{{route('login')}}" style=" color:white; padding-left: 45px" class="btn btn-primary">Login</a> --}}
+                    @endauth
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

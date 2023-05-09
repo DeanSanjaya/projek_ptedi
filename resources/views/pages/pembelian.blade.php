@@ -437,7 +437,6 @@
             $('select[name="pemasok"]').on('change', function() {
                 var nama_pemasok = $("#pemasok option:selected").attr("nama_pemasok");
                 $("#nama_pemasok").val(nama_pemasok);
-                // console.log(nama_pemasok);
                 var alamat_pemasok = $("#pemasok option:selected").attr("address");
                 $("#alamat_pemasok").val(alamat_pemasok);
                 var phone = $("#pemasok option:selected").attr("phone");
