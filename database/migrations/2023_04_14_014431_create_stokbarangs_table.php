@@ -13,14 +13,14 @@ class CreateStokbarangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stokbarangs', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_kat')->nullable();
-            $table->integer('id_brng')->nullable();
-            $table->string('jumlah')->nullable();
-            $table->string('hargajual')->nullable();
-            $table->timestamps();
-        });
+        // Schema::create('stokbarangs', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('id_kat')->nullable();
+        //     $table->integer('id_brng')->nullable();
+        //     $table->string('jumlah')->nullable();
+        //     $table->string('hargajual')->nullable();
+        //     $table->timestamps();
+        // });
     }
 
     /**

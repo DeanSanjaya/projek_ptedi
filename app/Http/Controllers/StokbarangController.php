@@ -11,6 +11,7 @@ use App\Models\Pembelian;
 use Illuminate\Support\Facades\DB;
 use JavaScript;
 use Laracasts\Utilities\JavaScript\Transformers\Transformer;
+use Illuminate\Support\Facades\Auth;
 
 class StokbarangController extends Controller
 {
@@ -62,11 +63,13 @@ class StokbarangController extends Controller
     {
         $stoklama = Barang::where('id', $request->merk)->select('stok')->value('stok');
         $jumlah_besar = Barang::where('id', $request->merk)->select('jumlah_besar')->value('jumlah_besar');
+        $user = Auth::user();
         $stok = Barang::where('id', $request->merk)->update([
             'stok' => $stoklama + $request->stok,
             'stok_deskripsi' => $request->desk_b_v,
             'harga_jual' => $request->hargajual,
             'jumlah_besar' => $jumlah_besar - $request->jualwadah,
+            'updated_by'    => $user->name,
         ]);
 
         // $jumlah
@@ -196,33 +199,23 @@ class StokbarangController extends Controller
         //     'name' => 'string|min:3|max:255|required',
         //     'volume' => 'numeric|min:1|required',
         // ]);
+        $user = Auth::user();
 
-        $merk = $request->name;
-        // $id_kat = $request->id_kat;
-        // $volume = $request->volume;
-        $namalama = DB::table('barangs')->where('name', 'like', "%" . $merk . "%")->get();
-        // dd($merk,$id_kat, $namalama, $volume);
+        $status = Barang::create([
+            'id_kat' => $request->id_kat,
+            'name' => $request->name,
+            'berat_volume' => $request->volume,
+            'updated_by' => $user->name,
+        ]);
+        //     $data = $request->all();
+        // dd($request->berat_volume);
 
-        if (count($namalama) > 0) {
-            request()->session()->flash('error', 'Name is Exist');
-            return redirect()->route('barang.index');
+        if ($status) {
+            request()->session()->flash('success', 'Merk Barang successfully added');
         } else {
-            $status = Barang::create([
-                'id_kat' => $request->id_kat,
-                'name' => $request->name,
-                'berat_volume' => $request->volume,
-                // 'keterangan' => $request->keterangan,
-            ]);
-            //     $data = $request->all();
-            // dd($request->berat_volume);
-
-            if ($status) {
-                request()->session()->flash('success', 'Merk Barang successfully added');
-            } else {
-                request()->session()->flash('error', 'Error occurred, Please try again!');
-            }
-            return redirect()->route('barang.index');
+            request()->session()->flash('error', 'Error occurred, Please try again!');
         }
+        return redirect()->route('barang.index');
     }
 
     public function merkbarang_edit(Request $request)

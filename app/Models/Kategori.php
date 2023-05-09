@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    protected $fillable=['id','name'];
+    protected $fillable=['id','name','created_by'];
 }

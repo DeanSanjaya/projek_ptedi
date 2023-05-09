@@ -8,6 +8,8 @@ use App\Models\Kategori;
 use App\Models\Pembelian;
 use App\Models\Barang;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PembelianController extends Controller
 {
@@ -49,7 +51,7 @@ class PembelianController extends Controller
         //     'address' => 'required|string|min:3|max:255',
         //     'email' => 'email|min:3|max:255',
         // ]);
-
+        $user = Auth::user();
 
         $status = Pembelian::create([
             'id_pemasok'    => $request->id_pemasok,
@@ -61,6 +63,7 @@ class PembelianController extends Controller
             'desk_b_v'      => $request->satuanberat,
             'hargabeli'     => $request->harga,
             'totalbeli'     => $request->total,
+            'created_by'    => $user->name,
         ]);
 
         $stoklama = Barang::where('id', $request->merk)->select('Jumlah_besar')->value('Jumlah_besar');
@@ -70,6 +73,7 @@ class PembelianController extends Controller
             'jumlah_besar_deskripsi' => $request->wadah,
             'jumlah_kecil'           => $request->berat,
             'jumlah_kecil_deskripsi' => $request->satuanberat,
+            'updated_by'             => $user->name,
         ]);
 
         // dd($status);
@@ -131,7 +135,7 @@ class PembelianController extends Controller
         // $jmlhbd = Pembelian::where('id', $id)->select('jumlah_besar_deskripsi')->value('jumlah_besar_deskripsi');
         // $jmlhk = Pembelian::where('id', $id)->select('jumlah_kecil')->value('jumlah_kecil');
         // $jmlhkd = Pembelian::where('id', $id)->select('jumlah_kecil_deskripsi')->value('jumlah_kecil_deskripsi');
-        $stok = Barang::where('id', $id_barang)->update([
+        Barang::where('id', $id_barang)->update([
             'jumlah_besar'           => $jmlhb - $request->jumlah_besar,
             // 'jumlah_besar_deskripsi' => null,
             // 'jumlah_kecil'           => $request->berat,

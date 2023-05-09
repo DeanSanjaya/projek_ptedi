@@ -63,6 +63,7 @@
                                                     {{-- @method('delete')
                                                                 <p>Delete <strong>{{ $pemasok->name }}</strong> </p> --}}
                                                     <div class="mb-3">
+                                                        <input type="hidden" name="created_by" id="created" value="{{Auth::user()->name}}">
                                                         <label for="name" class="form-label">Nama Kategori :</label>
                                                         <input type="text" class="form-control" id="name"
                                                             name="name" value="{{ old('name') }}" required autofocus>
@@ -242,13 +243,6 @@
                                                         <input type="text" class="form-control" id="volume"
                                                             name="volume" required>
                                                     </div>
-
-                                                    {{-- <div class="mb-3">
-                                                        <label for="keterangan" class="form-label">Keterangan lainnya
-                                                            :</label>
-                                                        <input type="text" class="form-control" id="keterangan"
-                                                            name="keterangan">
-                                                    </div> --}}
 
                                             </div>
                                             <div class="modal-footer">

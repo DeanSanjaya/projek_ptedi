@@ -18,13 +18,24 @@ class PemasokSeeder extends Seeder
             'email'   => 'Indofood@gmail.com',
             'phone'   => '087123456789',
             'address' => 'Sidoarjo',
-            // 'status'=>'active'
         ],
         [
             'name'    => 'CV. Sayur Segar',
             'email'   => 'sayursegar@gmail.com',
-            'phone'   => '087632654876',
+            'phone'   => '087650354876',
             'address' => 'Malang',
+        ],
+        [
+            'name'    => 'CV. Buah Sehat',
+            'email'   => 'buahsehat@gmail.com',
+            'phone'   => '081952654876',
+            'address' => 'Malang',
+        ],
+        [
+            'name'    => 'CV. Aneka Bumbu Dapur',
+            'email'   => 'bumbudapur@gmail.com',
+            'phone'   => '081295654876',
+            'address' => 'Lamongan',
         ]
         ]);
     }
