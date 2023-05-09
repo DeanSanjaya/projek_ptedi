@@ -110,6 +110,11 @@ class WelcomeController extends Controller
         return view ('pages.profile.index');
     }
 
+    public function email()
+    {
+        return view ('pages.profile.email');
+    }
+
     // public function pembelian(){
     //     return view('pages.pembelian');
     // }

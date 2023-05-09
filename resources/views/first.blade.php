@@ -72,7 +72,7 @@
                     <h1>A <span class="better">BETTER</span> WAY TO GROW YOUR CREATIVE <span
                             class="bisnis">BUSINESS</span></h1>
                     <h2>Manage your business with application to get faster and better </h2>
-                    <div><a href="#about" class="btn-get-started scrollto">Get Started</a></div>
+                    <div><a href="#package" class="btn-get-started scrollto">Get Started</a></div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img">
                     <img src="{{ asset('assets/onepage/img/bisnis.png ') }}" class="img-fluid" alt="computer">
