@@ -103,11 +103,10 @@
 
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('toko')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Toko</a>
-                                    {{-- <button type="button" class="btn btn-primary">Edit Toko</button> --}}
-                                </div>
 
-                                {{-- <div id="revenueChart"></div> --}}
+                                    <a href="{{route('toko')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Toko</a>
+                        
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,22 +118,23 @@
                                 </div>
                                 <div class="d-flex justify-content-center ">
                                     <div class="mb-3">
-                                        <img src="https://via.placeholder.com/200x200" class="rounded-circle wd-200"
+                                        <img src="{{ asset('storage/' . auth::user()->photo) }}" class="rounded-circle wd-200"
                                             alt="user">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center ">
                                     <div class="mb-2 text-center">
                                         <h4>{{ Auth::user()->name }}</h4>
-                                        <p>tes</p>
-                                        <p>asdasdda</p>
+                                        <p>{{ auth::user()->address}}</p>
+                                        <p>{{ auth::user()->phone}}</p>
                                     </div>
 
 
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('profile')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Profile</a>
-                                    {{-- <button type="button" class="btn btn-primary">Edit Profile</button> --}}
+
+                                    <a href="{{route('profile.index')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Profile</a>
+
                                 </div>
 
                             </div>

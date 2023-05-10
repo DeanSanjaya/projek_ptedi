@@ -30,9 +30,14 @@ Route::get('/pemasokip/{id}','PemasokController@pemasokip');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::get('/main', 'WelcomeController@dashboard')->name('main');
-    Route::get('/profile','WelcomeController@profile') -> name('profile');
-    Route::get('/profile/email','WelcomeController@email') -> name('email');
+
+    Route::get('/profile/email','ProfileController@email') -> name('email');
+    Route::post('/profile/email','ProfileController@email_store') -> name('email.store');
+    // Route::get('/profile','WelcomeController@profile') -> name('profile');
+    // Route::get('/profile','WelcomeController@profile') -> name('profile');
+    // Route::get('/profile/email','WelcomeController@email') -> name('email');
     Route::get('main/toko','WelcomeController@toko') -> name('toko');
+
     // Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
     // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
     // Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
@@ -52,7 +57,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::resource('karyawan', 'KaryawanController');
     Route::resource('barang','StokbarangController');
     Route::resource('produksi','ProduksiController');
-
+    Route::resource('profile','ProfileController');
     
 
     // //Karyawan View
