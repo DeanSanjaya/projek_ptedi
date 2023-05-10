@@ -110,15 +110,6 @@ class WelcomeController extends Controller
         return view('manajemen');
     }
 
-    public function profile()
-    {
-        return view ('pages.profile.index');
-    }
-
-    public function email()
-    {
-        return view ('pages.profile.email');
-    }
 
     // public function pembelian(){
     //     return view('pages.pembelian');

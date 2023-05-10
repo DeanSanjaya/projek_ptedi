@@ -53,7 +53,7 @@
                         <div class="email-aside-nav collapse">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center" href="{{ route('profile') }}">
+                                    <a class="nav-link d-flex align-items-center" href="{{ route('profile.index') }}">
                                         <i data-feather="user" class="icon-lg me-2"></i>
                                         Profile Saya
                                     </a>
@@ -72,20 +72,21 @@
             <div class="col-lg-7 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample">
+                        <form class="forms-sample" action="{{route('email.store')}}" method="post">
+                            @csrf
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" autocomplete="off"
-                                    value="amiahburton@gmail.com" disabled>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" autocomplete="off"
+                                    value="{{auth::user()->email}}" disabled>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="off"
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" autocomplete="off"
                                     placeholder="Password">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputConfirmPassword1" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="exampleInputConfirmPassword1" autocomplete="off"
+                                <label for="confirmpassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" autocomplete="off"
                                     placeholder="Confirm Password">
                             </div>
                             <div class="d-flex justify-content-around button">
