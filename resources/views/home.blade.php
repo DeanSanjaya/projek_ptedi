@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="page-content">
-
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
                 <h4 class="mb-3 mb-md-0">Welcome {{ Auth::user()->name }}</h4>
@@ -104,7 +103,9 @@
 
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a href="" type="button" class="btn btn-outline-primary">Edit Toko</a>
+
+                                    <a href="{{route('toko')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Toko</a>
+                        
                                 </div>
                             </div>
                         </div>
@@ -131,7 +132,9 @@
 
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{route('profile.index')}}" type="button" class="btn btn-outline-primary">Edit Profile</a>
+
+                                    <a href="{{route('profile.index')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Profile</a>
+
                                 </div>
 
                             </div>

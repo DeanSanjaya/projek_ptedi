@@ -1,6 +1,19 @@
 @extends('templates.default')
 
 @section('content')
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     <div class="page-content">
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
@@ -18,6 +31,7 @@
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center" href="{{ route('profile.index') }}">
+
                                         <i data-feather="user" class="icon-lg me-2"></i>
                                         Profile Saya
                                     </a>
@@ -58,9 +72,11 @@
                                     placeholder="Nama" value="{{ auth::user()->name }}">
                             </div>
                             <div class="mb-3">
+
                                 <label for="telp" class="form-label">No Telepon</label>
                                 <input type="text" class="form-control" id="telp" name="telp"
                                     value="{{ auth::user()->phone }}" placeholder="No Telepon">
+
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Alamat</label>

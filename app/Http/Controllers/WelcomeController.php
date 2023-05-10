@@ -111,6 +111,11 @@ class WelcomeController extends Controller
     }
 
 
+    public function toko()
+    {
+        return view ('pages.toko.index');
+    }
+
     // public function pembelian(){
     //     return view('pages.pembelian');
     // }
