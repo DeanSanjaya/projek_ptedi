@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pembelian;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
@@ -97,7 +98,11 @@ class WelcomeController extends Controller
 
     public function dashboard()
     {
-        return view('home');
+        $pengeluaran = DB::table('pembelians')->select('totalbeli')->sum('totalbeli');
+        $stok = DB::table('barangs')->select('stok')->value('stok');
+        $harga = DB::table('barangs')->select('harga_jual')->value('harga_jual');
+        // dd($stok);
+        return view('home',compact('pengeluaran'));
     }
 
     public function manajemen()
