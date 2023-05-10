@@ -1,6 +1,19 @@
 @extends('templates.default')
 
 @section('content')
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     <div class="page-content">
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
@@ -17,13 +30,13 @@
                         <div class="email-aside-nav collapse">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center" href="{{route('profile')}}">
+                                    <a class="nav-link d-flex align-items-center" href="{{ route('profile') }}">
                                         <i data-feather="user" class="icon-lg me-2"></i>
                                         Profile Saya
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center" href="{{route('email')}}">
+                                    <a class="nav-link d-flex align-items-center" href="{{ route('email') }}">
                                         <i data-feather="lock" class="icon-lg me-2"></i>
                                         Email & Kata Sandi
                                     </a>
@@ -57,7 +70,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputTelp1" class="form-label">No Telepon</label>
-                                <input type="tel" class="form-control" id="exampleInputTelp1" placeholder="No Telepon">
+                                <input type="number" class="form-control" id="exampleInputTelp1" placeholder="No Telepon">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputAlamat1" class="form-label">Alamat</label>
