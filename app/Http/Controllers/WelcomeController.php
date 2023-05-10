@@ -120,6 +120,11 @@ class WelcomeController extends Controller
         return view ('pages.profile.email');
     }
 
+    public function toko()
+    {
+        return view ('pages.toko.index');
+    }
+
     // public function pembelian(){
     //     return view('pages.pembelian');
     // }
