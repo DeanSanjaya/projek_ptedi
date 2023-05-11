@@ -7,7 +7,9 @@
     <meta name="keywords"
         content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-    <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+    <title>ERPEDII</title>
+    <link href="{{ asset('assets/onepage/img/edi.jpg') }}" rel="icon">
+    <link href="{{ asset('assets/onepage/img/edi.jpg') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +38,7 @@
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/demo1/style.css') }}">
     <!-- End layout styles -->
 
-    <link rel="shortcut icon" href="{{ asset('assets/dashboard/images/favicon.png') }}" />
+    
     {{-- {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 </head>

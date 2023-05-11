@@ -2,25 +2,34 @@
 <html class="no-js" lang="en">
 @include('templates.partials.head')
 
+<style>
+    img{
+        transform: scale(1.05)
+    }
+    @media (max-width: 991px) {
+        img {
+            display: none;
+        }
+    }
+</style>
+
 <body>
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
             <div class="page-content d-flex align-items-center justify-content-center">
-
                 <div class="row w-100 mx-0 auth-page">
                     <div class="col-md-8 col-xl-6 mx-auto">
                         <div class="card">
                             <div class="row">
                                 <div class="col-md-4 pe-md-0">
-                                    <div class="auth-side-wrapper">
-
-                                    </div>
+                                    <img style="height: 100%;" class="img-fluid"
+                                        src="{{ asset('assets/onepage/img/Group.svg') }}" alt="">
                                 </div>
                                 <div class="col-md-8 ps-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
-                                        <h5 class="text-muted fw-normal mb-4">Create a free account.</h5>
-
+                                        {{-- <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
+                                        <h5 class="text-muted fw-normal mb-4">Create a free account.</h5> --}}
+                                        <h2 class="mb-4 text-center">Register</h2>
                                         <form method="POST" class="forms-sample"
                                             action="{{ route('registersubmit') }}">
                                             @csrf
@@ -72,8 +81,8 @@
                                                 
                                             </div> --}}
                                             <div>
-                                                <button type="submit"
-                                                    class="btn btn-primary text-white me-2 mb-2 mb-md-0">
+                                                <button style="background-color:#002F49; border: 2px solid #002F49;"
+                                                    type="submit" class="btn text-white me-2 mb-2 mb-md-0">
                                                     Sign up
                                                 </button>
                                             </div>
