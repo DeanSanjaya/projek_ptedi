@@ -87,26 +87,42 @@
                                 <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
                                     <h6 class="card-title mb-0">Toko</h6>
                                 </div>
-                                <div class="d-flex justify-content-center ">
-                                    <div class="mb-3">
-                                        <img src="https://via.placeholder.com/300x300" class=" wd-300"
-                                            alt="user">
+                                @if ($id_toko == null)
+                                    <div class="d-flex justify-content-center ">
+                                        <div class="mb-3">
+                                            <img src="https://via.placeholder.com/300x300" class=" wd-300" alt="toko">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-center ">
-                                    <div class="mb-2 text-center">
-                                        <h4>Toko Makmur</h4>
-                                        <p>Sidoarjo</p>
-                                        <p>089767545</p>
+                                    <div class="d-flex justify-content-center ">
+                                        <div class="mb-2 text-center">
+                                            <h4>Toko Belum Diatur</h4>
+                                        </div>
                                     </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('toko.index') }}" class="btn btn-primary" role="button"
+                                            aria-disabled="true">Atur Toko</a>
+                                    </div>
+                                @endif
+                                @foreach ($toko as $toko)
+                                    <div class="d-flex justify-content-center ">
+                                        <div class="mb-3">
+                                            <img src="{{ asset('storage/' . $toko->photo) }}" class=" wd-300"
+                                                alt="{{ $toko->photo }}">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center ">
+                                        <div class="mb-2 text-center">
+                                            <h4>{{ $toko->name }}</h4>
+                                            <p>{{ $toko->address }}</p>
+                                            <p>{{ $toko->phone }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('toko.index') }}" class="btn btn-primary" role="button"
+                                            aria-disabled="true">Edit Toko</a>
+                                    </div>
+                                @endforeach
 
-
-                                </div>
-                                <div class="d-flex justify-content-center">
-
-                                    <a href="{{route('toko')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Toko</a>
-                        
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,23 +133,25 @@
                                     <h6 class="card-title mb-3">Profile</h6>
                                 </div>
                                 <div class="d-flex justify-content-center ">
+                                  
                                     <div class="mb-3">
-                                        <img src="{{ asset('storage/' . auth::user()->photo) }}" class="rounded-circle wd-200"
-                                            alt="user">
+                                        <img src="{{ asset('storage/' . auth::user()->photo) }}"
+                                            class="rounded-circle wd-200" alt="user">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center ">
                                     <div class="mb-2 text-center">
                                         <h4>{{ Auth::user()->name }}</h4>
-                                        <p>{{ auth::user()->address}}</p>
-                                        <p>{{ auth::user()->phone}}</p>
+                                        <p>{{ auth::user()->address }}</p>
+                                        <p>{{ auth::user()->phone }}</p>
                                     </div>
 
 
                                 </div>
                                 <div class="d-flex justify-content-center">
 
-                                    <a href="{{route('profile.index')}}" class="btn btn-primary" role="button" aria-disabled="true">Edit Profile</a>
+                                    <a href="{{ route('profile.index') }}" class="btn btn-primary" role="button"
+                                        aria-disabled="true">Edit Profile</a>
 
                                 </div>
 

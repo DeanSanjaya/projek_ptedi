@@ -33,10 +33,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
 
     Route::get('/profile/email','ProfileController@email') -> name('email');
     Route::post('/profile/email','ProfileController@email_store') -> name('email.store');
-    // Route::get('/profile','WelcomeController@profile') -> name('profile');
-    // Route::get('/profile','WelcomeController@profile') -> name('profile');
-    // Route::get('/profile/email','WelcomeController@email') -> name('email');
-    Route::get('main/toko','WelcomeController@toko') -> name('toko');
+    Route::get('/toko','ProfileController@toko') -> name('toko.index');
+    Route::post('/toko','ProfileController@toko_store') -> name('toko.store');
+    Route::post('/toko/update','ProfileController@toko_update') -> name('toko.update');
 
     // Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
     // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');

@@ -80,6 +80,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('profile') => storage_path('app/public/profile'),
+        public_path('toko') => storage_path('app/public/toko'),
     ],
 
 ];

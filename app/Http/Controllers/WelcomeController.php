@@ -10,6 +10,7 @@ use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Toko;
 
 class WelcomeController extends Controller
 {
@@ -102,7 +103,9 @@ class WelcomeController extends Controller
         $stok = DB::table('barangs')->select('stok')->value('stok');
         $harga = DB::table('barangs')->select('harga_jual')->value('harga_jual');
         // dd($stok);
-        return view('home',compact('pengeluaran'));
+        $toko = Toko::select('tokos.id AS id_toko', 'tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo', 'users.id')->join('users', 'users.id', '=', 'tokos.id_user')->where('tokos.id_user', '=', auth::user()->id)->get();
+        $id_toko = Toko::select('tokos.id')->where('tokos.id_user', auth::user()->id)->value('tokos.id');
+        return view('home', compact('pengeluaran', 'toko','id_toko'));
     }
 
     public function manajemen()
@@ -111,10 +114,7 @@ class WelcomeController extends Controller
     }
 
 
-    public function toko()
-    {
-        return view ('pages.toko.index');
-    }
+
 
     // public function pembelian(){
     //     return view('pages.pembelian');
