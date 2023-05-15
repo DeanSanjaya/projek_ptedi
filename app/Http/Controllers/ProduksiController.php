@@ -17,15 +17,13 @@ class ProduksiController extends Controller
      */
     public function index()
     {
-        $nama = DB::table('barangs')->select('barangs.name AS name')->join('produksis','barangs.id','=','produksis.id_barang')->groupBy('name')->get();
-        $id = DB::table('barangs')->select('produksis.id_barang')->join('produksis','barangs.id','=','produksis.id_barang')->groupBy('id_barang')->get();
-        $barang = DB::table('barangs')->select('produksis.id_barang')->join('produksis','barangs.id','=','produksis.id_barang')->get();
-        
-
-        $produksis = DB::table('barangs')->select('barangs.name AS name', 'barangs.stok', 'barangs.stok_deskripsi', 'barangs.harga_jual', 'produksis.bahan', 'produksis.jumlah','produksis.row','produksis.created_by')->join('produksis','barangs.id','=','produksis.id_barang')->get();
-        // $count = count($nama);
-        // dd($produksis);
-        return view('pages.produksi.index',compact('produksis'));
+        if (auth::user()->id_toko == null) {
+            request()->session()->flash('error', 'complete your store profile first!');
+            return redirect()->route('toko.index');
+        } else {
+            $produksis = DB::table('barangs')->select('produksis.id_toko AS id_toko', 'barangs.name AS name', 'barangs.stok', 'barangs.stok_deskripsi', 'barangs.harga_jual', 'produksis.bahan', 'produksis.jumlah', 'produksis.row', 'produksis.created_by')->join('produksis', 'barangs.id', '=', 'produksis.id_barang')->where('produksis.id_toko', auth::user()->id_toko)->get();
+            return view('pages.produksi.index', compact('produksis'));
+        }
     }
 
     /**
@@ -35,8 +33,8 @@ class ProduksiController extends Controller
      */
     public function create()
     {
-        $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name', 'barangs.berat_volume AS volume')->orderBy('barangs.id', 'ASC')->get();
-        $bahans = DB::table('barangs')->select('barangs.id AS id', 'barangs.name', 'barangs.berat_volume AS volume', 'barangs.stok', 'barangs.stok_deskripsi', 'barangs.jumlah_besar', 'barangs.jumlah_besar_deskripsi', 'barangs.jumlah_kecil', 'barangs.jumlah_kecil_deskripsi')->where('jumlah_besar', '>', 0)->orderBy('barangs.id', 'ASC')->get();
+        $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name', 'barangs.berat_volume AS volume')->where('barangs.id_toko', auth::user()->id_toko)->orderBy('barangs.id', 'ASC')->get();
+        $bahans = DB::table('barangs')->select('barangs.id AS id', 'barangs.name', 'barangs.berat_volume AS volume', 'barangs.stok', 'barangs.stok_deskripsi', 'barangs.jumlah_besar', 'barangs.jumlah_besar_deskripsi', 'barangs.jumlah_kecil', 'barangs.jumlah_kecil_deskripsi')->where('jumlah_besar', '>', 0)->where('barangs.id_toko', auth::user()->id_toko)->orderBy('barangs.id', 'ASC')->get();
 
         return view('pages.produksi.create', compact('barangs', 'bahans'));
     }
@@ -64,8 +62,9 @@ class ProduksiController extends Controller
         for ($i = 0; $i < $count; $i++) {
             Produksi::create([
                 'id_barang' => $request->merk,
-                'row'   => count($request->bahan),
-                'bahan'  => $request->bahan[$i],
+                'id_toko'   => auth::user()->id_toko,
+                'row'       => count($request->bahan),
+                'bahan'     => $request->bahan[$i],
                 'jumlah'    => $request->jumlah[$i],
                 // 'jumlah_deskripsi'  => $request->jumlah_deskripsi[$i],
                 'created_by' => $user->name,

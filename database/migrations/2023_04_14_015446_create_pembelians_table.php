@@ -18,7 +18,7 @@ class CreatePembeliansTable extends Migration
             $table->integer('id_pemasok')->nullable();
             $table->integer('id_kat')->nullable();
             $table->integer('id_brng')->nullable();
-            // $table->integer('id_stkbrng')->nullable();
+            $table->integer('id_toko')->nullable();
             $table->string('jumlah')->nullable();
             $table->string('deskripsijumlah')->nullable();
             $table->string('berat_volume')->nullable();

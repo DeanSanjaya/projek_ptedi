@@ -36,7 +36,7 @@ class WelcomeController extends Controller
             // dd($data);
             if ($data == 'admin') {
                 request()->session()->flash('success', 'Successfully login');
-                return redirect()->route('main');
+                return redirect()->route('admin');
             } else {
                 request()->session()->flash('success', 'Successfully login');
                 return redirect()->route('main');
@@ -99,7 +99,7 @@ class WelcomeController extends Controller
 
     public function dashboard()
     {
-        $pengeluaran = DB::table('pembelians')->select('totalbeli')->sum('totalbeli');
+        $pengeluaran = DB::table('pembelians')->select('totalbeli','id_toko')->where('pembelians.id_toko', auth::user()->id_toko)->sum('totalbeli');
         $stok = DB::table('barangs')->select('stok')->value('stok');
         $harga = DB::table('barangs')->select('harga_jual')->value('harga_jual');
         // dd($stok);

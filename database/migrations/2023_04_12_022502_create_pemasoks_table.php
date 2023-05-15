@@ -15,11 +15,12 @@ class CreatePemasoksTable extends Migration
     {
         Schema::create('pemasoks', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_toko')->nullable();
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->integer('created_by')->nullable();
+            $table->string('created_by')->nullable();
             $table->timestamps();
         });
     }
