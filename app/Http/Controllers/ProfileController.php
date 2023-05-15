@@ -140,6 +140,12 @@ class ProfileController extends Controller
             'address' => $request->address,
             'photo' => $image,
         ]);
+
+        $lastid = $status->id;
+        // dd($lastid);
+        User::where('id' , auth::user()->id)->update([
+            'id_toko' => $lastid,
+        ]);
         // } else {
         // $status = Toko::where('id',$request->id_toko)->update([
         // 'name' => $request->name,

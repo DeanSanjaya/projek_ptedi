@@ -20,11 +20,16 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $pemasoks = Pemasok::orderBy('id', 'DESC')->get();
-        $kategoris = Kategori::orderBy('id', 'ASC')->get();
-        $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'kategoris.id AS id_kat', 'barangs.berat_volume')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->orderBy('barangs.id', 'ASC')->get();
-        $pembelians = DB::table('pembelians')->select('pembelians.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'pembelians.berat_volume', 'pembelians.jumlah', 'pembelians.deskripsijumlah', 'pembelians.desk_b_v', 'pembelians.hargabeli', 'pembelians.totalbeli', 'pemasoks.name AS pemasokname')->join('barangs', 'pembelians.id_brng', '=', 'barangs.id')->join('kategoris', 'pembelians.id_kat', '=', 'kategoris.id')->join('pemasoks', 'pemasoks.id', '=', 'pembelians.id_pemasok')->orderBy('pembelians.id', 'ASC')->get();
-        return view('pages.pembelian', compact('pemasoks', 'barangs', 'kategoris', 'pembelians'));
+        if (auth::user()->id_toko == null) {
+            request()->session()->flash('error', 'complete your store profile first!');
+            return redirect()->route('toko.index');
+        } else {
+            $pemasoks = Pemasok::orderBy('id', 'DESC')->where('pemasoks.id_toko', auth::user()->id_toko)->get();
+            $kategoris = Kategori::orderBy('id', 'ASC')->get();
+            $barangs = DB::table('barangs')->select('barangs.id AS id', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'kategoris.id AS id_kat', 'barangs.berat_volume')->join('kategoris', 'barangs.id_kat', '=', 'kategoris.id')->where('barangs.id_toko', auth::user()->id_toko)->orderBy('barangs.id', 'ASC')->get();
+            $pembelians = DB::table('pembelians')->select('pembelians.id AS id', 'pembelians.id_toko', 'barangs.name AS barangname', 'kategoris.name AS kategoriname', 'pembelians.berat_volume', 'pembelians.jumlah', 'pembelians.deskripsijumlah', 'pembelians.desk_b_v', 'pembelians.hargabeli', 'pembelians.totalbeli', 'pemasoks.name AS pemasokname')->join('barangs', 'pembelians.id_brng', '=', 'barangs.id')->join('kategoris', 'pembelians.id_kat', '=', 'kategoris.id')->join('pemasoks', 'pemasoks.id', '=', 'pembelians.id_pemasok')->where('pembelians.id_toko', auth::user()->id_toko)->orderBy('pembelians.id', 'ASC')->get();
+            return view('pages.pembelian', compact('pemasoks', 'barangs', 'kategoris', 'pembelians'));
+        }
     }
 
     /**
@@ -57,6 +62,7 @@ class PembelianController extends Controller
             'id_pemasok'    => $request->id_pemasok,
             'id_kat'        => $request->kategori,
             'id_brng'       => $request->merk,
+            'id_toko'       => auth::user()->id_toko,
             'jumlah'        => $request->jumlah,
             'deskripsijumlah' => $request->wadah,
             'berat_volume'  => $request->berat,

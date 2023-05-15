@@ -326,8 +326,7 @@
                                 </div>
 
                                 <input class="btn btn-primary" type="submit" value="Submit">
-                            </fieldset>
-                        </form>
+                           
 
                                 <div class="mb-3">
                                     <div class="row">

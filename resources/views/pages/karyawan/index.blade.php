@@ -46,6 +46,10 @@
                                                 data-bs-target="#modal{{ $karyawan->id }}" data-bs-toggle="modal">
                                                 <i data-feather="trash-2"></i>
                                             </button>
+                                            <button onclick="window.location='{{ route('set_user', $karyawan->id) }}'"
+                                                type="button" title="Jadikan Sebagai User" class="btn btn-secondary btn-icon">
+                                                <i data-feather="user-plus"></i>
+                                            </button>
                                         </td>
                                     </tr>
 

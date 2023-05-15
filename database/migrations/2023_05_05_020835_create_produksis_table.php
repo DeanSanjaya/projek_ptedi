@@ -16,6 +16,7 @@ class CreateProduksisTable extends Migration
         Schema::create('produksis', function (Blueprint $table) {
             $table->id();
             $table->integer('id_barang')->nullable();
+            $table->integer('id_toko')->nullable();
             $table->integer('row')->nullable();
             $table->string('bahan')->nullable();
             $table->string('jumlah')->nullable();

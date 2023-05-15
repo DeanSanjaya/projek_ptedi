@@ -16,8 +16,13 @@ class PemasokController extends Controller
      */
     public function index()
     {
-        $pemasok = Pemasok::orderBy('id', 'DESC')->get();
-        return view('pages.pemasok.index',compact('pemasok'));
+        if (auth::user()->id_toko == null) {
+            request()->session()->flash('error', 'complete your store profile first!');
+            return redirect()->route('toko.index');
+        } else {
+            $pemasok = Pemasok::orderBy('id', 'DESC')->where('pemasoks.id_toko', auth::user()->id_toko)->get();
+            return view('pages.pemasok.index', compact('pemasok'));
+        }
     }
 
     /**
@@ -118,6 +123,6 @@ class PemasokController extends Controller
     public function pemasokip($id)
     {
         $pemasok = Pemasok::findorFail($id);
-        return response()->json(['name'=>$pemasok->name, 'phone' => $pemasok->phone],200);
+        return response()->json(['name' => $pemasok->name, 'phone' => $pemasok->phone], 200);
     }
 }

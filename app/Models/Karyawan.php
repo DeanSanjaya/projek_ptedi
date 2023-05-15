@@ -8,6 +8,6 @@ class Karyawan extends Model
 {
     protected $fillable = [
 
-        'id','name','email','phone','address'
+        'id','name','email','phone','address','id_toko'
     ];
 }

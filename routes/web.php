@@ -36,6 +36,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
     Route::get('/toko','ProfileController@toko') -> name('toko.index');
     Route::post('/toko','ProfileController@toko_store') -> name('toko.store');
     Route::post('/toko/update','ProfileController@toko_update') -> name('toko.update');
+    Route::get('/karyawan/{id}/buatakun','KaryawanController@set_user')->name('set_user');
+    Route::post('/karyawan/buatakun','KaryawanController@buatakun') -> name('buatakun');
+
 
     // Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
     // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
@@ -73,4 +76,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
 
 
 
+});
+Route::group(['prefix' => 'admin', 'middleware' => [ 'admin']], function () {
+    Route::get('/dashboard', 'WelcomeController@dashboard')->name('admin');
 });
