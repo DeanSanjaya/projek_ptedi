@@ -78,5 +78,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
 
 });
 Route::group(['prefix' => 'admin', 'middleware' => [ 'admin']], function () {
-    Route::get('/dashboard', 'WelcomeController@dashboard')->name('admin');
+    Route::get('/dashboard', 'AdminController@dashboard')->name('admin');
+    Route::get('/alltoko','AdminController@alltoko')->name('alltoko');
+    Route::get('/alluser','AdminController@alluser')->name('alluser');
 });

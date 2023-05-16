@@ -11,22 +11,22 @@
     </div>
     <div class="sidebar-body">
         <ul class="nav">
-            @if (auth::user()->role == 'admin')
+            @if (Auth::user()->role == 'admin')
                 <li class="nav-item nav-category">Main</li>
                 <li class="nav-item">
-                    <a href="{{ route('main') }}" class="nav-link">
+                    <a href="{{ route('admin') }}" class="nav-link">
                         <i class="link-icon" data-feather="box"></i>
                         <span class="link-title">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{route('alluser')}}" class="nav-link">
                         <i class="link-icon" data-feather="user"></i>
                         <span class="link-title">Daftar User</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{route('alltoko')}}" class="nav-link">
                         <i class="link-icon" data-feather="user"></i>
                         <span class="link-title">Daftar Toko</span>
                     </a>

@@ -53,12 +53,12 @@
                         <form method="post" action="{{ route('profile.store') }} " enctype="multipart/form-data">
                             @csrf
                             <div class="text-center">
-                                <h4 class="card-title">Welcome, {{ auth::user()->name }}</h4>
+                                <h4 class="card-title">Welcome, {{ Auth::user()->name }}</h4>
                                 <p class="tx-20 text-muted">Informasi mengenai profil dan preferensi anda di seluruh layanan
                                     kami</p>
                                 <div class="profile-pic-div">
                                     <img id="photoold" class="my-4 rounded-circle wd-150"
-                                        src="{{ asset('storage/' . auth::user()->photo) }}" class="img-fluid"
+                                        src="{{ asset('storage/' . Auth::user()->photo) }}" class="img-fluid"
                                         alt="profile">
                                     <input style="display:none" class="form-control" type="file" id="image" name="image">
                                     <br>
@@ -69,18 +69,18 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="name" name="name" autocomplete="off"
-                                    placeholder="Nama" value="{{ auth::user()->name }}">
+                                    placeholder="Nama" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="mb-3">
 
                                 <label for="telp" class="form-label">No Telepon</label>
                                 <input type="text" class="form-control" id="telp" name="telp"
-                                    value="{{ auth::user()->phone }}" placeholder="No Telepon">
+                                    value="{{ Auth::user()->phone }}" placeholder="No Telepon">
 
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" value="{{ auth::user()->address }}"
+                                <input type="text" class="form-control" value="{{ Auth::user()->address }}"
                                     id="address" name="address" autocomplete="off" placeholder="Alamat">
                             </div>
                             <div class="d-flex justify-content-around button">
