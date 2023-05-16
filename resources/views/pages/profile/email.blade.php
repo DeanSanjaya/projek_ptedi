@@ -77,7 +77,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="email" autocomplete="off"
-                                    value="{{auth::user()->email}}" disabled>
+                                    value="{{Auth::user()->email}}" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
