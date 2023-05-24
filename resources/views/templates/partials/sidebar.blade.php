@@ -20,13 +20,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('alluser')}}" class="nav-link">
+                    <a href="{{ route('alluser') }}" class="nav-link">
                         <i class="link-icon" data-feather="user"></i>
                         <span class="link-title">Daftar User</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('alltoko')}}" class="nav-link">
+                    <a href="{{ route('alltoko') }}" class="nav-link">
                         <i class="link-icon" data-feather="user"></i>
                         <span class="link-title">Daftar Toko</span>
                     </a>
@@ -71,6 +71,32 @@
                         <span class="link-title">Daftar Karyawan</span>
                     </a>
                 </li>
+                <li class="nav-item nav-category">Kasir</li>
+                {{-- <li class="nav-item">
+                    <a href="{{ route('kasir') }}" class="nav-link">
+                        <i class="link-icon" data-feather="shop"></i>
+                        <span class="link-title">Kasir</span>
+                    </a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#kasir" role="button" aria-expanded="false"
+                        aria-controls="kasir">
+                        <i class="link-icon" data-feather="shopping-cart"></i>
+                        <span class="link-title">Penjualan</span>
+                        <i class="link-arrow" data-feather="chevron-down"></i>
+                    </a>
+                    <div class="collapse" id="kasir">
+                        <ul class="nav sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('kasir') }}" class="nav-link">Kasir</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('kasir.riwayat')}}" class="nav-link">Riwayat Penjualan</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+               
             @endif
 
         </ul>

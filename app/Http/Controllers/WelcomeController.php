@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pembelian;
+use App\Models\Penjualan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -105,7 +106,9 @@ class WelcomeController extends Controller
         // dd($stok);
         $toko = Toko::select('tokos.id AS id_toko', 'tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo', 'users.id')->join('users', 'users.id', '=', 'tokos.id_user')->where('tokos.id_user', '=', auth::user()->id)->get();
         $id_toko = Toko::select('tokos.id')->where('tokos.id_user', auth::user()->id)->value('tokos.id');
-        return view('home', compact('pengeluaran', 'toko','id_toko'));
+        $penjualan = Penjualan::Select('id_toko', 'total_bayar')->where('penjualans.id_toko', auth::user()->id_toko)->sum('total_bayar');
+        $karyawan = DB::table('karyawans')->where('id_toko', auth::user()->id_toko)->count();
+        return view('home', compact('pengeluaran', 'toko','id_toko','penjualan','karyawan'));
     }
 
     public function manajemen()

@@ -32,6 +32,7 @@ $(function() {
             }
 
             var states = response.json(); // Parse the JSON data.
+            console.log(states);
         })
         .then((data) => {
              // This is where you handle what to do with the response.

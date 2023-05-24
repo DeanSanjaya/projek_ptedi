@@ -19,66 +19,51 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', 'WelcomeController@index')->name('/');
 // Route::get('/dashboard', 'WelcomeController@dashboard')->name('dashboard');
-Route::get('/login','WelcomeController@login')->name('login');
+Route::get('/login', 'WelcomeController@login')->name('login');
 Route::post('/login', 'WelcomeController@loginsubmit')->name('loginsubmit');
-Route::get('/register','WelcomeController@register')->name('register');
+Route::get('/register', 'WelcomeController@register')->name('register');
 Route::post('/register', 'WelcomeController@registersubmit')->name('registersubmit');
 Route::get('/logout', 'WelcomeController@logout')->name('logout');
-Route::get('/search_kategori','StokbarangController@search_kategori')->name('search_kategori');
-Route::get('/kategori_ip/{id}','StokbarangController@kategori_ip');
-Route::get('/pemasokip/{id}','PemasokController@pemasokip');
+Route::get('/search_kategori', 'StokbarangController@search_kategori')->name('search_kategori');
+Route::get('/kategori_ip/{id}', 'StokbarangController@kategori_ip');
+Route::get('/pemasokip/{id}', 'PemasokController@pemasokip');
+Route::get('/search_barang/{name}', 'KasirController@search_barang');
+Route::get('/detail_barang/{id}', 'KasirController@detail_barang');
 
-Route::group(['prefix' => 'dashboard', 'middleware' => [ 'user']], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['user']], function () {
     Route::get('/main', 'WelcomeController@dashboard')->name('main');
 
-    Route::get('/profile/email','ProfileController@email') -> name('email');
-    Route::post('/profile/email','ProfileController@email_store') -> name('email.store');
-    Route::get('/toko','ProfileController@toko') -> name('toko.index');
-    Route::post('/toko','ProfileController@toko_store') -> name('toko.store');
-    Route::post('/toko/update','ProfileController@toko_update') -> name('toko.update');
-    Route::get('/karyawan/{id}/buatakun','KaryawanController@set_user')->name('set_user');
-    Route::post('/karyawan/buatakun','KaryawanController@buatakun') -> name('buatakun');
+    Route::get('/profile/email', 'ProfileController@email')->name('email');
+    Route::post('/profile/email', 'ProfileController@email_store')->name('email.store');
+    Route::get('/toko', 'ProfileController@toko')->name('toko.index');
+    Route::post('/toko', 'ProfileController@toko_store')->name('toko.store');
+    Route::post('/toko/update', 'ProfileController@toko_update')->name('toko.update');
+    Route::get('/karyawan/{id}/buatakun', 'KaryawanController@set_user')->name('set_user');
+    Route::post('/karyawan/buatakun', 'KaryawanController@buatakun')->name('buatakun');
 
+    Route::post('/kategori', 'StokbarangController@kategori_store')->name('kategori_store');
+    Route::post('/kategori/edit', 'StokbarangController@kategori_edit')->name('kategori.edit');
+    Route::post('/kategori/destroy/{id}', 'StokbarangController@kategori_destroy')->name('kategori.destroy');
 
-    // Route::get('/manajemen', 'WelcomeController@manajemen')->name('manajemen');
-    // Route::get('/pembelian', 'WelcomeController@pembelian')->name('pembelian');
-    // Route::get('/pemasok', 'WelcomeController@pemasok')->name('pemasok');
-    
-    Route::post('/kategori','StokbarangController@kategori_store')->name('kategori_store');
-    Route::post('/kategori/edit','StokbarangController@kategori_edit')->name('kategori.edit');
-    Route::post('/kategori/destroy/{id}','StokbarangController@kategori_destroy')->name('kategori.destroy');
+    Route::post('/merk', 'StokbarangController@merkbarang_store')->name('merkbarang_store');
+    Route::post('/merk/edit', 'StokbarangController@merkbarang_edit')->name('merkbarang.edit');
+    Route::post('/merk/destroy/{id}', 'StokbarangController@merkbarang_destroy')->name('merkbarang.destroy');
 
-    Route::post('/merk','StokbarangController@merkbarang_store')->name('merkbarang_store');
-    Route::post('/merk/edit','StokbarangController@merkbarang_edit')->name('merkbarang.edit');
-    Route::post('/merk/destroy/{id}','StokbarangController@merkbarang_destroy')->name('merkbarang.destroy');
+    Route::get('/kasir', 'KasirController@index')->name('kasir');
+    Route::post('/kasir', 'KasirController@store')->name('kasir.store');
+    Route::get('/kasir/riwayat','KasirController@riwayat')->name('kasir.riwayat');
 
-    
-   
-    Route::resource('pemasok','PemasokController');
-    Route::resource('pembelian','PembelianController');
+    Route::resource('pemasok', 'PemasokController');
+    Route::resource('pembelian', 'PembelianController');
     Route::resource('karyawan', 'KaryawanController');
-    Route::resource('barang','StokbarangController');
-    Route::resource('produksi','ProduksiController');
-    Route::resource('profile','ProfileController');
-    
-
-    // //Karyawan View
-    // Route::get('/karyawan','KaryawanController@index')->name('karyawan.index');
-    // //Karyawan Create
-    // Route::get('/karyawan/create','KaryawanController@create')->name('karyawan.create');
-    // Route::post('/karyawan/store','KaryawanController@store')->name('karyawan.store');
-    // //Karyawan Update
-    // Route::get('/karyawan/store/{id}','KaryawanController@edit')->name('karyawan.edit');
-    // Route::post('/karyawan/update/{id}','KaryawanController@update')->name('karyawan.update');
-    // //karyawan delete
-    // Route::get('/karyawan/delete/{id}','KaryawanController@destroy')->name('karyawan.delete');
-
-
-
-
+    Route::resource('barang', 'StokbarangController');
+    Route::resource('produksi', 'ProduksiController');
+    Route::resource('profile', 'ProfileController');
 });
-Route::group(['prefix' => 'admin', 'middleware' => [ 'admin']], function () {
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin');
-    Route::get('/alltoko','AdminController@alltoko')->name('alltoko');
-    Route::get('/alluser','AdminController@alluser')->name('alluser');
+    Route::get('/alltoko', 'AdminController@alltoko')->name('alltoko');
+    Route::get('/alluser', 'AdminController@alluser')->name('alluser');
 });

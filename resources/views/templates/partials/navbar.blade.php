@@ -8,7 +8,9 @@
                 <div class="input-group-text">
                     <i data-feather="search"></i>
                 </div>
-                <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+                <div id="the-basics">
+                    <input type="text" class="form-control typeahead"  placeholder="Search here...">
+                </div>
             </div>
         </form>
         <ul class="navbar-nav">

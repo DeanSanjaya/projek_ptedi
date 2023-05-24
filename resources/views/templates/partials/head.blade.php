@@ -30,7 +30,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/sweetalert2/sweetalert2.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/sweetalert2/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/select2/select2.min.css') }}">
     <!-- endinject -->
 

@@ -51,7 +51,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h2 class="mb-2">
-                                            {{-- Rp.  {{ number_format($pendapatan, 0, ',', '.') }} --}}
+                                            Rp.  {{ number_format($penjualan, 0, ',', '.') }}
                                         </h2>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h2 class="mb-2">
-                                            {{-- Rp.  {{ number_format($pendapatan, 0, ',', '.') }} --}}
+                                           {{$karyawan}}
                                         </h2>
                                     </div>
                                 </div>
