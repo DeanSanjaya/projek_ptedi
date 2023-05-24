@@ -1,7 +1,7 @@
-$(function() {
+$(function () {
   'use strict'
 
-  var substringMatcher = function(strs) {
+  var substringMatcher = function (strs) {
     return function findMatches(q, cb) {
       var matches, substringRegex;
 
@@ -23,27 +23,16 @@ $(function() {
     };
   };
 
-  fetch("/search_kategori")
-        .then((response) => {
-            if(!response.ok){ // Before parsing (i.e. decoding) the JSON data,
-                              // check for any errors.
-                // In case of an error, throw.
-                throw new Error("Something went wrong!");
-            }
-            // Parse the JSON data.
-
-            // data.filter((item) => item.name != 'name')
-            response.json().then((data)=>console.log(data));
-            // var states = response.json().attr("name");
-            // alert(response);
-        })
-        // .then((data) => {
-        //      // This is where you handle what to do with the response.
-        //      alert(data); // Will alert: 42
-        // })
-        .catch((error) => {
-             // This is where you handle errors.
-        });
+  var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+    'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+    'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+    'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+    'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+    'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+    'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+  ];
 
   $('#the-basics .typeahead').typeahead({
     hint: true,
