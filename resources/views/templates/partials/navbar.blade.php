@@ -3,14 +3,13 @@
         <i data-feather="menu"></i>
     </a>
     <div class="navbar-content">
-        <form class="search-form">
+        <form class="search-form" method="post" action="{{route('cari')}}">
+            @csrf
             <div class="input-group">
                 <div class="input-group-text">
                     <i data-feather="search"></i>
                 </div>
-                <div id="the-basics">
-                    <input type="text" class="form-control typeahead"  placeholder="Search here...">
-                </div>
+                    <input type="text" class="form-control" id="navbarForm" name="cari" placeholder="Search here...">
             </div>
         </form>
         <ul class="navbar-nav">
@@ -95,12 +94,12 @@
                     <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                         <div class="mb-3">
 
-                            <img class="wd-80 ht-80 rounded-circle" src="{{ asset('storage/' . auth::user()->photo) }}"
+                            <img class="wd-80 ht-80 rounded-circle" src="{{ asset('storage/' . Auth::user()->photo) }}"
                                 alt="">
                         </div>
                         <div class="text-center">
-                            <p class="tx-16 fw-bolder">{{ auth::user()->name }}</p>
-                            <p class="tx-12 text-muted">{{ auth::user()->email }}</p>
+                            <p class="tx-16 fw-bolder">{{ Auth::user()->name }}</p>
+                            <p class="tx-12 text-muted">{{ Auth::user()->email }}</p>
                         </div>
                     </div>
                     <ul class="list-unstyled p-1">

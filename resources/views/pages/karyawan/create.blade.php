@@ -17,7 +17,7 @@
                         <form class="cmxform" id="signupForm" method="post" action="{{ route('karyawan.store') }}">
                             @csrf
                             <div class="mb-3">
-                                <input type="hidden" name="id_toko" id="id_toko" value="{{auth::user()->id_toko}}">
+                                <input type="hidden" name="id_toko" id="id_toko" value="{{Auth::user()->id_toko}}">
                                 <label for="name" class="form-label">Nama</label>
                                 <input id="name" class="form-control @error('name') is-invalid @enderror"
                                     name="name" type="text" value="{{ old('name') }}"

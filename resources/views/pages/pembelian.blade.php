@@ -86,7 +86,7 @@
                                                     <label for="jenis-barang" class="form-label">Merk Barang</label>
                                                     <select id="merk" class="merk form-select js-example-basic-single"
                                                         name="merk" data-width="100%">
-                                                        <option value="0">Pilih</option>
+                                                        <option value="0">PILIH MERK</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-6">
@@ -517,7 +517,7 @@
                             // jika ada kita looping dengan each
                             $.each(data, function(key, value) {
                                 // perhtikan dimana kita akan menampilkan data select nya, di sini saya memberi name select kota adalah kota_id
-                                $('select[name="merk"]').append('<option value="' +
+                                $('select[name="merk"]').append('<option>PILIH MERK</option> <option value="' +
                                     value.id + '" berat_volume="' + value
                                     .berat_volume + '" >' + ' ' + value.name +
                                     '</option>');
@@ -530,7 +530,7 @@
                     $('select[name="merk"]').empty();
                 }
             })
-            $('select[name="merk"]').on('change', function() {
+            $('select[name="merk"]').on('click', function() {
                 var bsat = $("#merk option:selected").attr("berat_volume");
                 $("#bsat").val(bsat);
             })
