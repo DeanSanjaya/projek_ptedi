@@ -24,6 +24,7 @@ Route::post('/login', 'WelcomeController@loginsubmit')->name('loginsubmit');
 Route::get('/register', 'WelcomeController@register')->name('register');
 Route::post('/register', 'WelcomeController@registersubmit')->name('registersubmit');
 Route::get('/logout', 'WelcomeController@logout')->name('logout');
+Route::post('/cari','WelcomeController@cari')->name('cari');
 Route::get('/search_kategori', 'StokbarangController@search_kategori')->name('search_kategori');
 Route::get('/kategori_ip/{id}', 'StokbarangController@kategori_ip');
 Route::get('/pemasokip/{id}', 'PemasokController@pemasokip');

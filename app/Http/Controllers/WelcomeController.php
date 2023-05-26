@@ -100,7 +100,7 @@ class WelcomeController extends Controller
 
     public function dashboard()
     {
-        $pengeluaran = DB::table('pembelians')->select('totalbeli','id_toko')->where('pembelians.id_toko', auth::user()->id_toko)->sum('totalbeli');
+        $pengeluaran = DB::table('pembelians')->select('totalbeli', 'id_toko')->where('pembelians.id_toko', auth::user()->id_toko)->sum('totalbeli');
         $stok = DB::table('barangs')->select('stok')->value('stok');
         $harga = DB::table('barangs')->select('harga_jual')->value('harga_jual');
         // dd($stok);
@@ -108,7 +108,7 @@ class WelcomeController extends Controller
         $id_toko = Toko::select('tokos.id')->where('tokos.id_user', auth::user()->id)->value('tokos.id');
         $penjualan = Penjualan::Select('id_toko', 'total_bayar')->where('penjualans.id_toko', auth::user()->id_toko)->sum('total_bayar');
         $karyawan = DB::table('karyawans')->where('id_toko', auth::user()->id_toko)->count();
-        return view('home', compact('pengeluaran', 'toko','id_toko','penjualan','karyawan'));
+        return view('home', compact('pengeluaran', 'toko', 'id_toko', 'penjualan', 'karyawan'));
     }
 
     public function manajemen()
@@ -119,9 +119,21 @@ class WelcomeController extends Controller
 
 
 
-    // public function pembelian(){
-    //     return view('pages.pembelian');
-    // }
+    public function cari(Request $request)
+    {
+        $hasil = $request->cari;
+        // return view('pages.pembelian');
+        $kategoris = DB::table('kategoris')->where('name', 'like', "%" . $request->cari . "%")->get();
+        $barangs = DB::table('barangs')->where('name', 'like', "%" . $request->cari . "%")->get();
+        // dd($barangs);
+        $karyawans = DB::table('karyawans')->where('name', 'like', "%" . $request->cari . "%")->get();
+        $pemasoks = DB::table('pemasoks')->where('name', 'like', "%" . $request->cari . "%")->get();
+        // $produksis = DB::table('produksis')->where('name', 'like', "%" . $request->cari . "%")->get();
+      
+        $totalpencarian = count($kategoris) + count($barangs) + count($karyawans) + count($pemasoks);
+      
+        return view('pages.hasilcari', compact('kategoris', 'barangs', 'karyawans', 'pemasoks','hasil','totalpencarian'));
+    }
 
     // public function pemasok()
     // {

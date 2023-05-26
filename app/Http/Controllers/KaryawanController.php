@@ -140,6 +140,6 @@ class KaryawanController extends Controller
             request()->session()->flash('error', 'Please try again!');
             return back();
         }
-        dd($data);
+        // dd($data);
     }
 }

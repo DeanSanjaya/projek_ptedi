@@ -71,17 +71,6 @@ class StokbarangController extends Controller
             'updated_by'    => $user->name,
         ]);
 
-        // $jumlah
-        // Pembelian::where('id_brng',$request->merk)->update([
-        //     'jumlah' => $stoklama + $request->stok,
-        //     'stok_deskripsi' => $request->desk_b_v,
-        //     'harga_jual' => $request->hargajual,
-        // ]);
-
-
-
-        // dd($status);
-
         if ($stok) {
             request()->session()->flash('success', 'successfully added Stock Penjualan');
         } else {
@@ -138,26 +127,10 @@ class StokbarangController extends Controller
     public function search_kategori()
     {
 
-        // $data = Kategori::orderBy('name', 'ASC')->get();
-
-        // $this->validate($request, [
-        //     'kate' => 'string|min:3|max:255|required',
-        // ]);
-        // $name = $request->kategori;
-        // $kategori = DB::table('kategoris')->where('name', 'like', "%" . $request . "%")->get();
-        // return response()->json(['name' => $data->name, 'id' => $data->id], 200);
-
-        // $data = Kategori::select("name")
-        //     ->where("name", "LIKE", "%{$request->query}%")
-        //     ->get();
-
         $data = Kategori::Select('name')->orderBy('name', 'ASC')->get();
         return response()->json($data);
     }
 
-    public function search_merk(Request $request)
-    {
-    }
 
     public function kategori_ip($id)
     {
@@ -231,12 +204,7 @@ class StokbarangController extends Controller
         if ($id_kat == null) {
             $id_kat = $request->kategoriold;
 
-            // dd(true);
         }
-        //  else{
-        // dd(false);
-        // }
-        // dd($id_kat);
         $status = Barang::where('id', $id)->update([
             'id_kat' => $id_kat,
             'name' => $request->name,

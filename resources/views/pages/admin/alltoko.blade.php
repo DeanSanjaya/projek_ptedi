@@ -15,29 +15,31 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Data Semua Toko</h6>
-                        <table id="dataTableExample" class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>No. Hp</th>
-                                    <th>Alamat</th>
-                                    <th>Email</th>
-                                    {{-- <th>Aksi</th> --}}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($toko as $toko)
+                        <div class="table-responsive">
+                            <table id="dataTableExample" class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $toko->name }}</td>
-                                        <td>{{ $toko->phone }}</td>
-                                        <td>{{ $toko->address }}</td>
-                                        <td> <img src="{{ asset('storage/' . $toko->photo) }}" class=" wd-300"
-                                                alt="{{ $toko->photo }}"></td>
-
+                                        <th>Nama</th>
+                                        <th>No. Hp</th>
+                                        <th>Alamat</th>
+                                        <th>Email</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($toko as $toko)
+                                        <tr>
+                                            <td>{{ $toko->name }}</td>
+                                            <td>{{ $toko->phone }}</td>
+                                            <td>{{ $toko->address }}</td>
+                                            <td> <img src="{{ asset('storage/' . $toko->photo) }}" class=" wd-300"
+                                                    alt="{{ $toko->photo }}"></td>
+
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

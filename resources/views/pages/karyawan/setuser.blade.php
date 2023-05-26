@@ -17,7 +17,7 @@
                         <form class="cmxform" method="post" action="{{ route('buatakun') }}">
                             @csrf
                             {{-- @method('PATCH') --}}
-                            <input type="hidden" name="id_toko" id="id_toko" value="{{auth::user()->id_toko}}">
+                            <input type="hidden" name="id_toko" id="id_toko" value="{{Auth::user()->id_toko}}">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama</label>
                                 <input id="name" class="form-control" name="name" type="text"

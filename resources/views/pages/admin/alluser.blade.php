@@ -15,29 +15,33 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Data Semua User</h6>
-                        <table id="dataTableExample" class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>No. Hp</th>
-                                    <th>Alamat</th>
-                                    <th>Email</th>
-                                    <th>Foto</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($user as $user)
+                        <div class="table-responsive">
+
+
+                            <table id="dataTableExample" class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->phone }}</td>
-                                        <td>{{ $user->address }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td> <img src="{{ asset('storage/' . $user->photo) }}" class=" wd-300"
-                                                alt="{{ $user->photo }}"></td>
+                                        <th>Nama</th>
+                                        <th>No. Hp</th>
+                                        <th>Alamat</th>
+                                        <th>Email</th>
+                                        <th>Foto</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user as $user)
+                                        <tr>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->phone }}</td>
+                                            <td>{{ $user->address }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td> <img src="{{ asset('storage/' . $user->photo) }}" class=" wd-300"
+                                                    alt="{{ $user->photo }}"></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
