@@ -29,6 +29,8 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/onepage/css/style.css') }}" rel="stylesheet">
 
+    {{-- AOS CDN --}}
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -49,7 +51,6 @@
                     {{-- <button type="button" class="btn btn-primary">Login</button> --}}
                     @auth
                         @if (Auth::check())
-
                             <a href="{{ route('main') }}" class="btn">Dashboard</a>
                         @else
                             <a href="{{ route('logout') }}" class="btn">Logout</a>
@@ -70,13 +71,14 @@
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <div data-aos="fade-right"
+                    class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <h1>A <span class="better">BETTER</span> WAY TO GROW YOUR CREATIVE <span
                             class="bisnis">BUSINESS</span></h1>
                     <h2>Manage your business with application to get faster and better </h2>
                     <div><a href="#package" class="btn-get-started scrollto">Get Started</a></div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                <div data-aos="fade-left" class="col-lg-6 order-1 order-lg-2 hero-img">
                     <img src="{{ asset('assets/onepage/img/bisnis.png ') }}" class="img-fluid" alt="computer">
                 </div>
             </div>
@@ -96,13 +98,13 @@
             </div>
             <div class="body container">
                 <div class="row">
-                    <div class="left col-lg-6 text-center">
-                        <h1>Control your business with our service</h1>
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam
-                            a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla
-                            mi in ligula. </h4>
+                    <div data-aos="fade-right"
+                        class="left col-lg-6 text-center d-flex flex-column justify-content-center">
+                        <h1>Control your business with Our Service</h1>
+                        <h4>The only platform you need to run your business: <br>
+                            integrated, simple and loved by millions of happy users.</h4>
                     </div>
-                    <div class="right col-lg-6">
+                    <div data-aos="fade-left" class="right col-lg-6">
                         <div class="row">
                             <div class="kiri col-6">
                                 <div class="kotak">
@@ -112,7 +114,7 @@
                                     <p class='text-center'>Produksi Stok</p>
                                 </div>
                                 <div class="kotak">
-                                    <p class='text-center'>Service 5</p>
+                                    <p class='text-center'>Kasir</p>
                                 </div>
                             </div>
                             <div class="kanan col-6">
@@ -147,32 +149,39 @@
             <div class="body container-fluid">
                 <div class="container">
                     <div class="bungkus row">
-                        <div class="col-lg-3">
+                        <div data-aos="fade-up" class="col-lg-3">
                             <div class="kotak">
                                 <div class="py-3 mx-3">
                                     <h2 class="text-center">Basic</h2>
-                                    <p class="text-center"> Usaha kecil yang membutuhkan kemudahan operasional lengkap </p>
+                                    <p class="text-center"> Usaha kecil yang membutuhkan kemudahan operasional lengkap
+                                    </p>
                                 </div>
                             </div>
-                            <div class="tombol"></div>
+                            <div class="tombol text-light d-flex justify-content-center align-items-center">
+                                <h3>Rp000.000.000</h3>
+                            </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div data-aos="fade-up" class="col-lg-3">
                             <div class="kotak">
                                 <div class="py-3 mx-3">
                                     <h2 class="text-center">Business</h2>
                                     <p class="text-center">Untuk usaha berkembang yang membutuhkan fitur lengkap</p>
                                 </div>
                             </div>
-                            <div class="tombol"></div>
+                            <div class="tombol text-light d-flex justify-content-center align-items-center">
+                                <h3>Rp000.000.000</h3>
+                            </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div data-aos="fade-up" class="col-lg-3">
                             <div class="kotak">
                                 <div class="py-3 mx-3">
                                     <h2 class="text-center">Professional</h2>
                                     <p class="text-center">Untuk usaha maju yang membutuhkan fitur otomasi</p>
                                 </div>
                             </div>
-                            <div class="tombol"></div>
+                            <div class="tombol text-light d-flex justify-content-center align-items-center">
+                                <h3>Rp000.000.000</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,7 +209,7 @@
                     <div class="text col text-end">
                         <h1>Follow Us</h1>
                         <div class="social-links">
-                            <a href="#"><i class="bi bi-whatsapp"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/company/pt-edi-indonesia/mycompany/"><i class="bi bi-linkedin"></i></a>
                             <a target="_blank"
                                 href="https://twitter.com/ediindonesia?ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Eprofile%3Aediindonesia&ref_url=http%3A%2F%2Fedi-indonesia.co.id%2F"><i
                                     class="bi bi-twitter"></i></a>
@@ -231,6 +240,13 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/onepage/js/main.js') }}"></script>
 
+    {{-- AOS Script --}}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+        });
+    </script>
 </body>
 
 </html>
