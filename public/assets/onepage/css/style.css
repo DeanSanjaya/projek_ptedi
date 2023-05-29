@@ -95,6 +95,10 @@ section {
     max-height: 100px;
 }
 
+#navbar li > a:hover {
+    color: #002f49;
+    /* transform: scale(1.4); */
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -440,7 +444,11 @@ section {
     transform: scale(0.9);
 }
 
-#main #packages .body .container .bungkus{
+#main #packages .body .row .tombol:hover {
+    background: #6f414b;
+}
+
+#main #packages .body .container .bungkus {
     display: flex;
     justify-content: space-around;
 }
@@ -450,7 +458,7 @@ section {
     color: #002f49;
 }
 
-#main #packages .body .row .kotak:hover{
+#main #packages .body .row .kotak:hover {
     transform: scale(1.1);
     transition: 0.1s;
 }
@@ -500,4 +508,8 @@ section {
 
 #footer .bg-1 .bg-2 .container .text .social-links a {
     color: white;
+}
+
+#footer .bg-1 .bg-2 .container .text .social-links a:hover {
+    color: #aee2f6;
 }
