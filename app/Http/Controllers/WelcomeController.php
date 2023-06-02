@@ -104,10 +104,11 @@ class WelcomeController extends Controller
         $stok = DB::table('barangs')->select('stok')->value('stok');
         $harga = DB::table('barangs')->select('harga_jual')->value('harga_jual');
         // dd($stok);
-        $toko = Toko::select('tokos.id AS id_toko', 'tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo', 'users.id')->join('users', 'users.id', '=', 'tokos.id_user')->where('tokos.id_user', '=', auth::user()->id)->get();
-        $id_toko = Toko::select('tokos.id')->where('tokos.id_user', auth::user()->id)->value('tokos.id');
+        $toko = Toko::select('tokos.id AS id_toko', 'tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo', 'users.id')->join('users', 'users.id', '=', 'tokos.id_user')->where('tokos.id', '=', auth::user()->id_toko)->get();
+        $id_toko = Toko::select('tokos.id')->where('tokos.id', Auth::user()->id_toko)->value('tokos.id');
+        // dd(Auth::user()->id_toko);
         $penjualan = Penjualan::Select('id_toko', 'total_bayar')->where('penjualans.id_toko', auth::user()->id_toko)->sum('total_bayar');
-        $karyawan = DB::table('karyawans')->where('id_toko', auth::user()->id_toko)->count();
+        $karyawan = DB::table('karyawans')->where('id_toko', Auth::user()->id_toko)->count();
         return view('home', compact('pengeluaran', 'toko', 'id_toko', 'penjualan', 'karyawan'));
     }
 

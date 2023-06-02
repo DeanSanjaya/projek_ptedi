@@ -18,8 +18,10 @@ class KaryawanController extends Controller
             request()->session()->flash('error', 'complete your store profile first!');
             return redirect()->route('toko.index');
         } else {
-            $karyawan = Karyawan::select('id', 'name', 'email', 'phone', 'address', 'id_toko')->where('karyawans.id_toko', auth::user()->id_toko)->get();
-            return view('pages.karyawan.index')->with('karyawan', $karyawan);
+            $karyawan = Karyawan::select('karyawans.id', 'karyawans.name', 'karyawans.email AS email', 'karyawans.phone', 'karyawans.address', 'karyawans.id_toko','users.role', 'users.email AS emails')->leftjoin('users','users.email','=','karyawans.email')->where('karyawans.id_toko', auth::user()->id_toko)->get();
+            // $sudahkaryawan = Karyawan::select('karyawans.email','users.email')->join('users','users.email','=','karyawans.email')->get();
+            // dd($karyawan);
+            return view('pages.karyawan.index',compact('karyawan'));
         }
     }
 
@@ -130,7 +132,7 @@ class KaryawanController extends Controller
             'password' => Hash::make($data['password']),
             'phone'    => $data['phone'],
             'address'  => $data['address'],
-            'role'     => 'user',
+            'role'     => 'karyawan',
             'status'   => 'active'
         ]);
         if ($status) {

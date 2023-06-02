@@ -39,17 +39,26 @@
 
                                         <td>
                                             <button onclick="window.location='{{ route('karyawan.edit', $karyawan->id) }}'"
-                                                type="button" class="btn btn-primary btn-icon">
+                                                type="button" title="Ubah Data Karyawan" class="btn btn-primary btn-icon">
                                                 <i data-feather="edit-2"></i>
                                             </button>
-                                            <button type="button" class="btn btn-danger btn-icon"
+                                            <button type="button" class="btn btn-danger btn-icon" title="Hapus Data Karyawan"
                                                 data-bs-target="#modal{{ $karyawan->id }}" data-bs-toggle="modal">
                                                 <i data-feather="trash-2"></i>
                                             </button>
-                                            <button onclick="window.location='{{ route('set_user', $karyawan->id) }}'"
-                                                type="button" title="Jadikan Sebagai User" class="btn btn-secondary btn-icon">
-                                                <i data-feather="user-plus"></i>
-                                            </button>
+                                            @if ($karyawan->role === null)
+                                                <button onclick="window.location='{{ route('set_user', $karyawan->id) }}'"
+                                                    type="button" title="Jadikan Sebagai User"
+                                                    class="btn btn-secondary btn-icon">
+                                                    <i data-feather="user-plus"></i>
+                                                </button>
+                                            @else
+                                                <button onclick="window.location='{{ route('set_user', $karyawan->id) }}'"
+                                                    type="button" title="Jadikan Sebagai User"
+                                                    class="btn btn-secondary btn-icon" disabled>
+                                                    <i data-feather="trash-2"></i>
+                                                </button>
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -72,7 +81,7 @@
                                                         {{-- @method('PUT') --}}
                                                         @method('delete')
                                                         <p>Delete <strong>{{ $karyawan->name }}</strong> </p>
-                                                        
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light"
