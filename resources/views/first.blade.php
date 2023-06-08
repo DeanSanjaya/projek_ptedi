@@ -110,22 +110,40 @@
                                 <div class="kotak">
                                     <p class='text-center'>Manajemen Stok</p>
                                 </div>
+                                <div class="detail text-center">
+                                    <p>Deskripsi Fitur</p>
+                                </div>
                                 <div class="kotak">
                                     <p class='text-center'>Produksi Stok</p>
                                 </div>
+                                <div class="detail text-center">
+                                    <p>Deskripsi Fitur</p>
+                                </div>
                                 <div class="kotak">
-                                    <p class='text-center'>Kasir</p>
+                                    <p class='text-center'>Karyawan</p>
+                                </div>
+                                <div class="detail text-center">
+                                    <p>Deskripsi Fitur</p>
                                 </div>
                             </div>
                             <div class="kanan col-6">
                                 <div class="kotak">
                                     <p class='text-center'>Pembelian Stok</p>
                                 </div>
+                                <div class="detail text-center">
+                                    <p>Deskripsi Fitur</p>
+                                </div>
                                 <div class="kotak">
                                     <p class='text-center'>Daftar Pemasok</p>
                                 </div>
+                                <div class="detail text-center">
+                                    <p>Deskripsi Fitur</p>
+                                </div>
                                 <div class="kotak">
-                                    <p class='text-center'>Service 6</p>
+                                    <p class='text-center'>Kasir</p>
+                                </div>
+                                <div class="detail text-center">
+                                    <p>Deskripsi Fitur</p>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +227,8 @@
                     <div class="text col text-end">
                         <h1>Follow Us</h1>
                         <div class="social-links">
-                            <a target="_blank" href="https://www.linkedin.com/company/pt-edi-indonesia/mycompany/"><i class="bi bi-linkedin"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/company/pt-edi-indonesia/mycompany/"><i
+                                    class="bi bi-linkedin"></i></a>
                             <a target="_blank"
                                 href="https://twitter.com/ediindonesia?ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Eprofile%3Aediindonesia&ref_url=http%3A%2F%2Fedi-indonesia.co.id%2F"><i
                                     class="bi bi-twitter"></i></a>
