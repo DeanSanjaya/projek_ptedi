@@ -393,6 +393,7 @@ section {
     border-radius: 40px;
     display: flex;
     margin: 10px;
+    cursor: pointer
 }
 
 #main #services .row .right .row .kiri .kotak {
@@ -404,6 +405,11 @@ section {
     border-radius: 40px;
     display: flex;
     margin: 10px;
+    cursor: pointer
+}
+
+.detail{
+    display: none;
 }
 
 @media (max-width: 992px) {

@@ -37,6 +37,7 @@
                                         <h2 class="mb-2">
                                             Rp. {{ number_format($pengeluaran, 0, ',', '.') }}
                                         </h2>
+                                        <div id="barPengeluaran"></div>
                                     </div>
                                 </div>
                             </div>
@@ -51,8 +52,9 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h2 class="mb-2">
-                                            Rp.  {{ number_format($penjualan, 0, ',', '.') }}
+                                            Rp. {{ number_format($penjualan, 0, ',', '.') }}
                                         </h2>
+                                        <div id="barPendapatan"></div>
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +69,9 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h2 class="mb-2">
-                                           {{$karyawan}}
+                                            {{ $karyawan }}
                                         </h2>
+                                        <div id="barKaryawan"></div>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +136,7 @@
                                     <h6 class="card-title mb-3">Profile</h6>
                                 </div>
                                 <div class="d-flex justify-content-center ">
-                                  
+
                                     <div class="mb-3">
                                         <img src="{{ asset('storage/' . auth::user()->photo) }}"
                                             class="rounded-circle wd-200" alt="user">
@@ -152,7 +155,6 @@
 
                                     <a href="{{ route('profile.index') }}" class="btn btn-primary" role="button"
                                         aria-disabled="true">Edit Profile</a>
-
                                 </div>
 
                             </div>
@@ -161,7 +163,175 @@
                 </div>
             </div>
         </div> <!-- row -->
-
-
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        let barPengeluaran = {
+            chart: {
+                type: 'bar',
+                height: '320',
+                parentHeightOffset: 0,
+                toolbar: {
+                    show: false
+                },
+            },
+            theme: {
+                mode: 'light'
+            },
+            tooltip: {
+                theme: 'light'
+            },
+            grid: {
+                padding: {
+                    bottom: -4
+                },
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            series: [{
+                name: 'sales',
+                data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
+            }],
+            xaxis: {
+                type: 'datetime',
+                categories: ['01/01/1991', '01/01/1992', '01/01/1993', '01/01/1994', '01/01/1995', '01/01/1996',
+                    '01/01/1997', '01/01/1998', '01/01/1999'
+                ],
+            },
+            legend: {
+                show: true,
+                position: "top",
+                horizontalAlign: 'center',
+                itemMargin: {
+                    horizontal: 8,
+                    vertical: 0
+                },
+            },
+            stroke: {
+                width: 0
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 4
+                }
+            }
+        }
+        var apexBarChart = new ApexCharts(document.querySelector("#barPengeluaran"), barPengeluaran);
+        apexBarChart.render();
+
+        let barPendapatan = {
+            chart: {
+                type: 'bar',
+                height: '320',
+                parentHeightOffset: 0,
+                toolbar: {
+                    show: false
+                },
+            },
+            theme: {
+                mode: 'light'
+            },
+            tooltip: {
+                theme: 'light'
+            },
+            grid: {
+                padding: {
+                    bottom: -4
+                },
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            series: [{
+                name: 'sales',
+                data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
+            }],
+            xaxis: {
+                type: 'datetime',
+                categories: ['01/01/1991', '01/01/1992', '01/01/1993', '01/01/1994', '01/01/1995', '01/01/1996',
+                    '01/01/1997', '01/01/1998', '01/01/1999'
+                ],
+            },
+            legend: {
+                show: true,
+                position: "top",
+                horizontalAlign: 'center',
+                itemMargin: {
+                    horizontal: 8,
+                    vertical: 0
+                },
+            },
+            stroke: {
+                width: 0
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 4
+                }
+            }
+        }
+        var apexBarChart = new ApexCharts(document.querySelector("#barPendapatan"), barPendapatan);
+        apexBarChart.render();
+
+        let barKaryawan = {
+            chart: {
+                type: 'bar',
+                height: '320',
+                parentHeightOffset: 0,
+                toolbar: {
+                    show: false
+                },
+            },
+            theme: {
+                mode: 'light'
+            },
+            tooltip: {
+                theme: 'light'
+            },
+            grid: {
+                padding: {
+                    bottom: -4
+                },
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            series: [{
+                name: 'sales',
+                data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
+            }],
+            xaxis: {
+                type: 'datetime',
+                categories: ['01/01/1991', '01/01/1992', '01/01/1993', '01/01/1994', '01/01/1995', '01/01/1996',
+                    '01/01/1997', '01/01/1998', '01/01/1999'
+                ],
+            },
+            legend: {
+                show: true,
+                position: "top",
+                horizontalAlign: 'center',
+                itemMargin: {
+                    horizontal: 8,
+                    vertical: 0
+                },
+            },
+            stroke: {
+                width: 0
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 4
+                }
+            }
+        }
+        var apexBarChart = new ApexCharts(document.querySelector("#barKaryawan"), barKaryawan);
+        apexBarChart.render();
+    </script>
 @endsection
