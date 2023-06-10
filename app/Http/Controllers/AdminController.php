@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $toko = DB::table('tokos')->count();
-        $user = User::where('role', 'user')->count();
+        $user = DB::table('users')->wherein('role',['user','karyawan'])->count();
         // dd($user);
         // $id_toko = Toko::select('tokos.id')->where('tokos.id_user', auth::user()->id)->value('tokos.id');
         return view('pages.admin.dashboard', compact('toko', 'user'));
@@ -26,7 +26,7 @@ class AdminController extends Controller
 
     public function alluser()
     {
-        $user = DB::table('users')->where('role','user')->orderBy('id', 'asc')->get();
+        $user = DB::table('users')->wherein('role',['user','karyawan'])->orderBy('id', 'asc')->get();
         return view('pages.admin.alluser', compact('user'));
     }
 }
