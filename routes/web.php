@@ -39,6 +39,8 @@ Route::get('/grafikkaryawan', 'WelcomeController@datakaryawan');
 Route::group(['prefix' => 'dashboard', 'middleware' => ['user']], function () {
     Route::get('/main', 'WelcomeController@dashboard')->name('main');
 
+    Route::get('/download/all/pdf', 'DownloadController@all_report_pdf')->name('all_report_pdf');
+
     Route::get('/profile/email', 'ProfileController@email')->name('email');
     Route::post('/profile/email', 'ProfileController@email_store')->name('email.store');
     Route::get('/toko', 'ProfileController@toko')->name('toko.index');
