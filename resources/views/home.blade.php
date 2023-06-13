@@ -164,15 +164,21 @@
             </div>
         </div> <!-- row -->
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script> --}}
     <script>
+        const pembelian = <?php echo $pembelian; ?>;
+        var pembelianbulan = <?php echo $pembelianbulan; ?>;
+
         let barPengeluaran = {
             chart: {
                 type: 'bar',
                 height: '320',
                 parentHeightOffset: 0,
                 toolbar: {
-                    show: false
+                    show: true
                 },
             },
             theme: {
@@ -192,14 +198,11 @@
                 }
             },
             series: [{
-                name: 'sales',
-                data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
+                name: 'Pengeluaran',
+                data: pembelian
             }],
             xaxis: {
-                type: 'datetime',
-                categories: ['01/01/1991', '01/01/1992', '01/01/1993', '01/01/1994', '01/01/1995', '01/01/1996',
-                    '01/01/1997', '01/01/1998', '01/01/1999'
-                ],
+                categories: pembelianbulan
             },
             legend: {
                 show: true,
@@ -222,13 +225,17 @@
         var apexBarChart = new ApexCharts(document.querySelector("#barPengeluaran"), barPengeluaran);
         apexBarChart.render();
 
+        const pendapatan = <?php echo $pendapatan; ?>;
+        var pendapatanbulan = <?php echo $pendapatanbulan; ?>;
+
+
         let barPendapatan = {
             chart: {
                 type: 'bar',
                 height: '320',
                 parentHeightOffset: 0,
                 toolbar: {
-                    show: false
+                    show: true
                 },
             },
             theme: {
@@ -248,14 +255,12 @@
                 }
             },
             series: [{
-                name: 'sales',
-                data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
+                name: 'Pendapatan',
+                data: pendapatan
+
             }],
             xaxis: {
-                type: 'datetime',
-                categories: ['01/01/1991', '01/01/1992', '01/01/1993', '01/01/1994', '01/01/1995', '01/01/1996',
-                    '01/01/1997', '01/01/1998', '01/01/1999'
-                ],
+                categories: pendapatanbulan
             },
             legend: {
                 show: true,
@@ -277,6 +282,7 @@
         }
         var apexBarChart = new ApexCharts(document.querySelector("#barPendapatan"), barPendapatan);
         apexBarChart.render();
+        
 
         let barKaryawan = {
             chart: {
@@ -304,14 +310,12 @@
                 }
             },
             series: [{
-                name: 'sales',
-                data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
+                name: 'Karyawan',
+                data: <?php echo $grafikkaryawan; ?>
             }],
             xaxis: {
-                type: 'datetime',
-                categories: ['01/01/1991', '01/01/1992', '01/01/1993', '01/01/1994', '01/01/1995', '01/01/1996',
-                    '01/01/1997', '01/01/1998', '01/01/1999'
-                ],
+                categories:  <?php echo $grafikkaryawanbulan; ?>
+               
             },
             legend: {
                 show: true,

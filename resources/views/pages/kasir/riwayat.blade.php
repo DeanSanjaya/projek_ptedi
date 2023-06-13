@@ -44,13 +44,26 @@
                                             @if ($key == 0 || $rowspan == $rowid)
                                                 @php
                                                     $rowid = 0;
-                                                    // $x = 
+                                                    // $x =
                                                     $rowspan = $penjualan->jumlah_item;
                                                 @endphp
-                                                <td rowspan="{{ $rowspan }}">{{ $no }}</td>
+                                                {{-- @php
+                                                $no = count($nomer);
+                                                
+                                                @endphp --}}
+                                                @if ($no === 1)
+                                                    <td rowspan="{{ $rowspan }}">{{ $no }}</td>
+                                                @else
+                                                   
+                                                        @php
+                                                            $no = $no - $rowspan + 1 ;
+                                                        @endphp
+                                                         <td rowspan="{{ $rowspan }}">{{ $no }}</td>
+                                                  
+                                                @endif
+                                                {{-- <td rowspan="{{ $rowspan }}">{{ $rowid }}</td> --}}
                                                 <td rowspan="{{ $rowspan }}">{{ $penjualan->date }}</td>
                                                 <td rowspan="{{ $rowspan }}">{{ $penjualan->created_by }} </td>
-                                                {{-- <td >tes</td> --}}
                                                 <td rowspan="{{ $rowspan }}">{{ $penjualan->total_bayar }} </td>
                                             @endif
                                             <td>{{ $penjualan->nama_barang }}</td>

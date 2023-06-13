@@ -87,7 +87,11 @@ class KasirController extends Controller
     {
         // $data = Barang::Select('id','name','harga_jual')->where('name', 'like', "%" . $nama . "%")->where('id_toko',$id_toko)->where('harga_jual','>',0)->orderBy('name', 'ASC')->get();
         $penjualans = Penjualan::Select('penjualans.created_at AS date', 'penjualans.id', 'penjualans.id_toko', 'penjualans.jumlah_item', 'penjualans.total_bayar', 'penjualans.nominal', 'penjualans.kembalian', 'penjualans.created_by', 'item_penjualans.id_penjualan', 'item_penjualans.nama_barang', 'item_penjualans.jumlah_barang', 'item_penjualans.harga', 'item_penjualans.subtotal')->join('item_penjualans', 'item_penjualans.id_penjualan', '=', 'penjualans.id')->where('penjualans.id_toko', auth::user()->id_toko)->get();
-        // dd($penjualan);
-        return view('pages.kasir.riwayat',compact('penjualans'));
+        // dd(count($penjualans));
+        $nomer = Penjualan::Select('penjualans.created_at AS date', 'penjualans.id', 'penjualans.id_toko', 'penjualans.jumlah_item', 'penjualans.total_bayar', 'penjualans.nominal', 'penjualans.kembalian', 'penjualans.created_by', 'item_penjualans.id_penjualan', 'item_penjualans.nama_barang', 'item_penjualans.jumlah_barang', 'item_penjualans.harga', 'item_penjualans.subtotal')->join('item_penjualans', 'item_penjualans.id_penjualan', '=', 'penjualans.id')->where('penjualans.id_toko', auth::user()->id_toko)->groupby('penjualans.id')->get();
+        // dd($nomer);
+        
+
+        return view('pages.kasir.riwayat',compact('penjualans','nomer'));
     }
 }
