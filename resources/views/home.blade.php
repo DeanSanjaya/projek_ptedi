@@ -6,8 +6,8 @@
             <div>
                 <h4 class="mb-3 mb-md-0">Welcome {{ Auth::user()->name }}</h4>
             </div>
-            {{-- <div class="d-flex align-items-center flex-wrap text-nowrap">
-                <div class="input-group date datepicker wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
+            <div class="d-flex align-items-center flex-wrap text-nowrap">
+                {{-- <div class="input-group date datepicker wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
                     <span class="input-group-text input-group-addon bg-transparent border-primary"><i data-feather="calendar"
                             class=" text-primary"></i></span>
                     <input type="text" class="form-control border-primary bg-transparent">
@@ -15,12 +15,16 @@
                 <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="printer"></i>
                     Print
-                </button>
-                <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                </button> --}}
+                <a href="{{ route('all_report_pdf') }}" target="_blank" type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
                     <i class="btn-icon-prepend" data-feather="download-cloud"></i>
                     Download Report
-                </button>
-            </div> --}}
+                </a>
+                {{-- <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                    <i class="btn-icon-prepend" data-feather="download-cloud"></i>
+                    Download Report
+                </button> --}}
+            </div>
         </div>
 
         <div class="row">
@@ -282,7 +286,7 @@
         }
         var apexBarChart = new ApexCharts(document.querySelector("#barPendapatan"), barPendapatan);
         apexBarChart.render();
-        
+
 
         let barKaryawan = {
             chart: {
@@ -290,7 +294,7 @@
                 height: '320',
                 parentHeightOffset: 0,
                 toolbar: {
-                    show: false
+                    show: true
                 },
             },
             theme: {
@@ -314,8 +318,8 @@
                 data: <?php echo $grafikkaryawan; ?>
             }],
             xaxis: {
-                categories:  <?php echo $grafikkaryawanbulan; ?>
-               
+                categories: <?php echo $grafikkaryawanbulan; ?>
+
             },
             legend: {
                 show: true,
