@@ -30,6 +30,11 @@ Route::get('/kategori_ip/{id}', 'StokbarangController@kategori_ip');
 Route::get('/pemasokip/{id}', 'PemasokController@pemasokip');
 Route::get('/search_barang/{name}', 'KasirController@search_barang');
 Route::get('/detail_barang/{id}', 'KasirController@detail_barang');
+Route::get('/ip_grafik_pendapatan', 'WelcomeController@grafik_pendapatan')->name('ipgrafikjual');
+Route::get('/pendapatan_bulan', 'WelcomeController@datapendapatan');
+Route::get('/grafik_pembelian', 'WelcomeController@grafik_pembelian');
+Route::get('/grafik_pembelian_bulan', 'WelcomeController@databulanpembelian');
+Route::get('/grafikkaryawan', 'WelcomeController@datakaryawan');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['user']], function () {
     Route::get('/main', 'WelcomeController@dashboard')->name('main');
