@@ -61,6 +61,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['user']], function () {
     Route::post('/kasir', 'KasirController@store')->name('kasir.store');
     Route::get('/kasir/riwayat','KasirController@riwayat')->name('kasir.riwayat');
 
+    Route::get('/karyawan/data', 'KaryawanController@data')->name('karyawan.data');
+    Route::get('/karyawan/user', 'KaryawanController@user')->name('karyawan.user');
+    Route::delete('/karyawan/user/{id}', 'KaryawanController@userdestroy')->name('karyawan.userdestroy');
+
     Route::resource('pemasok', 'PemasokController');
     Route::resource('pembelian', 'PembelianController');
     Route::resource('karyawan', 'KaryawanController');

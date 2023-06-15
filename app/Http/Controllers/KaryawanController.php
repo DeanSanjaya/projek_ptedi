@@ -12,17 +12,22 @@ use Illuminate\Support\Facades\Auth;
 
 class KaryawanController extends Controller
 {
-    public function index()
+    public function data()
     {
         if (auth::user()->id_toko == null) {
             request()->session()->flash('error', 'complete your store profile first!');
             return redirect()->route('toko.index');
         } else {
-            $karyawan = Karyawan::select('karyawans.id', 'karyawans.name', 'karyawans.email AS email', 'karyawans.phone', 'karyawans.address', 'karyawans.id_toko','users.role', 'users.email AS emails')->leftjoin('users','users.email','=','karyawans.email')->where('karyawans.id_toko', auth::user()->id_toko)->get();
-            // $sudahkaryawan = Karyawan::select('karyawans.email','users.email')->join('users','users.email','=','karyawans.email')->get();
-            // dd($karyawan);
-            return view('pages.karyawan.index',compact('karyawan'));
+            $karyawan = Karyawan::select('karyawans.id', 'karyawans.name', 'karyawans.email AS email', 'karyawans.phone', 'karyawans.address', 'karyawans.id_toko', 'users.role', 'users.email AS emails')->leftjoin('users', 'users.email', '=', 'karyawans.email')->where('karyawans.id_toko', auth::user()->id_toko)->get();
+            return view('pages.karyawan.index', compact('karyawan'));
         }
+    }
+
+    public function user()
+    {
+        $karyawan = Karyawan::select('karyawans.id', 'karyawans.name', 'karyawans.email AS email', 'karyawans.phone', 'karyawans.address', 'karyawans.id_toko', 'users.role', 'users.email AS emails', 'users.photo', 'users.id AS id_user')->join('users', 'users.email', '=', 'karyawans.email')->where('karyawans.id_toko', auth::user()->id_toko)->get();
+        // return $karyawan;
+        return view('pages.karyawan.listuser', compact('karyawan'));
     }
 
     public function create()
@@ -51,13 +56,13 @@ class KaryawanController extends Controller
         if ($record = Karyawan::firstOrCreate($data)) {
             Session::flash('message', 'Karyawan Added Successfully!');
             Session::flash('alert-class', 'alert-success');
-            return redirect()->route('karyawan.index');
+            return redirect()->route('karyawan.data');
         } else {
             Session::flash('message', 'Error occurred, Please try again!');
             Session::flash('alert-class', 'alert-danger');
         }
 
-        return redirect()->route('karyawan.index');
+        return redirect()->route('karyawan.data');
     }
 
     public function edit($id)
@@ -88,7 +93,7 @@ class KaryawanController extends Controller
 
             Session::flash('message', 'Update successfully!');
             Session::flash('alert-class', 'alert-success');
-            return redirect()->route('karyawan.index');
+            return redirect()->route('karyawan.data');
         } else {
             Session::flash('message', 'Data not updated!');
             Session::flash('alert-class', 'alert-danger');
@@ -99,11 +104,29 @@ class KaryawanController extends Controller
 
     public function destroy($id)
     {
+
         Karyawan::destroy($id);
 
         Session::flash('message', 'Delete successfully!');
         Session::flash('alert-class', 'alert-success');
-        return redirect()->route('karyawan.index');
+        return redirect()->route('karyawan.data');
+    }
+
+    public function userdestroy($id)
+    {
+        // $karyawan = Karyawan::select('email,id')->where('id', $id)->value('email');
+        // $user = User::select('email,id')->where('email', $karyawan)->value('id');
+
+        // return $user;
+        $status = User::destroy($id);
+
+        if ($status) {
+            request()->session()->flash('success', 'Successfully Deleted');
+            return redirect()->route('karyawan.user');
+        } else {
+            request()->session()->flash('error', 'Please try again!');
+            return back();
+        }
     }
 
     public function set_user($id)
@@ -137,7 +160,7 @@ class KaryawanController extends Controller
         ]);
         if ($status) {
             request()->session()->flash('success', 'Successfully registered');
-            return redirect()->route('karyawan.index');
+            return redirect()->route('karyawan.data');
         } else {
             request()->session()->flash('error', 'Please try again!');
             return back();

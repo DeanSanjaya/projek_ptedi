@@ -66,11 +66,29 @@
                 </li>
                 @if (Auth::user()->role == 'user')
                     <li class="nav-item nav-category">Karyawan</li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('karyawan.index') }}" class="nav-link">
                             <i class="link-icon" data-feather="user"></i>
                             <span class="link-title">Daftar Karyawan</span>
                         </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#kasir" role="button" aria-expanded="false"
+                            aria-controls="kasir">
+                            <i class="link-icon" data-feather="shopping-cart"></i>
+                            <span class="link-title">Karyawan</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="kasir">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('karyawan.data') }}" class="nav-link">Data Karyawan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('karyawan.user') }}" class="nav-link">User Karyawan</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 @endif
                 <li class="nav-item nav-category">Kasir</li>
