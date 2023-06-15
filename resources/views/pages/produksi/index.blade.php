@@ -6,7 +6,7 @@
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('main') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data Barang</li>
+                <li class="breadcrumb-item active" aria-current="page">Produksi Barang</li>
             </ol>
         </nav>
 

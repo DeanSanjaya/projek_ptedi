@@ -108,22 +108,22 @@
                         <div class="row">
                             <div class="kiri col-6">
                                 <div class="kotak">
-                                    <p class='text-center'>Manajemen Stok</p>
+                                    <p class='text-center'>Manajemen Barang</p>
                                 </div>
                                 <div class="detail text-center">
-                                    <p>Deskripsi Fitur</p>
+                                    <p>Admin dan karyawan dapat mengelola barang yang sudah disimpan</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Produksi Stok</p>
                                 </div>
                                 <div class="detail text-center">
-                                    <p>Deskripsi Fitur</p>
+                                    <p>Admin dan karyawan dapat memproduksi barang sesuai dengan komponen yang ada</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Karyawan</p>
                                 </div>
                                 <div class="detail text-center">
-                                    <p>Deskripsi Fitur</p>
+                                    <p>Admin dapat membuat akun karyawan yang bekerja ditokonya masing-masing</p>
                                 </div>
                             </div>
                             <div class="kanan col-6">
@@ -131,19 +131,19 @@
                                     <p class='text-center'>Pembelian Stok</p>
                                 </div>
                                 <div class="detail text-center">
-                                    <p>Deskripsi Fitur</p>
+                                    <p>Admin dan karyawan dapat membeli barang berdasarkan data daftar pemasok</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Daftar Pemasok</p>
                                 </div>
                                 <div class="detail text-center">
-                                    <p>Deskripsi Fitur</p>
+                                    <p>Admin dan keryawan dapat mengelola data perusahaan yang mensupply barang</p>
                                 </div>
                                 <div class="kotak">
                                     <p class='text-center'>Kasir</p>
                                 </div>
                                 <div class="detail text-center">
-                                    <p>Deskripsi Fitur</p>
+                                    <p>Admin dan karyawan dapat menggunakan kasir untuk memudahkan melakukan perhitungan transaksi</p>
                                 </div>
                             </div>
                         </div>

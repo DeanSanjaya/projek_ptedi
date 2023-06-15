@@ -3,13 +3,13 @@
         <i data-feather="menu"></i>
     </a>
     <div class="navbar-content">
-        <form class="search-form" method="post" action="{{route('cari')}}">
+        <form class="search-form" method="post" action="{{ route('cari') }}">
             @csrf
             <div class="input-group">
                 <div class="input-group-text">
                     <i data-feather="search"></i>
                 </div>
-                    <input type="text" class="form-control" id="navbarForm" name="cari" placeholder="Search here...">
+                <input type="text" class="form-control" id="navbarForm" name="cari" placeholder="Search here...">
             </div>
         </form>
         <ul class="navbar-nav">
@@ -85,15 +85,14 @@
                 </div>
             </li> --}}
             <li class="nav-item dropdown">
-
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="wd-30 ht-30 rounded-circle" src="{{ asset('storage/' . auth::user()->photo) }}" alt="profile">
+                    <img class="wd-30 ht-30 rounded-circle" src="{{ asset('storage/' . auth::user()->photo) }}"
+                        alt="profile">
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                     <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                         <div class="mb-3">
-
                             <img class="wd-80 ht-80 rounded-circle" src="{{ asset('storage/' . Auth::user()->photo) }}"
                                 alt="">
                         </div>
@@ -102,20 +101,15 @@
                             <p class="tx-12 text-muted">{{ Auth::user()->email }}</p>
                         </div>
                     </div>
-                    <ul class="list-unstyled p-1">
-                        <li class="dropdown-item py-2">
-                            <a href="{{ route('profile.index') }}" class="text-body ms-0">
-                                <i class="me-2 icon-md" data-feather="user"></i>
-                                <span>Profile</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-item py-2">
-                            <a href="{{ route('toko.index') }}" class="text-body ms-0">
-                                <i class="me-2 icon-md" data-feather="home"></i>
-                                <span>Toko</span>
-                            </a>
-                        </li>
-                        {{-- <li class="dropdown-item py-2">
+                    @if (Auth::user()->role == 'admin')
+                        <ul class="list-unstyled p-1">
+                            <li class="dropdown-item py-2">
+                                <a href="{{ route('profile.index') }}" class="text-body ms-0">
+                                    <i class="me-2 icon-md" data-feather="user"></i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            {{-- <li class="dropdown-item py-2">
                             <a href="javascript:;" class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="edit"></i>
                                 <span>Edit Profile</span>
@@ -127,13 +121,47 @@
                                 <span>Switch User</span>
                             </a>
                         </li> --}}
-                        <li class="dropdown-item py-2">
-                            <a href="{{ route('logout') }}" class="text-body ms-0">
-                                <i class="me-2 icon-md" data-feather="log-out"></i>
-                                <span>Log Out</span>
-                            </a>
+                            <li class="dropdown-item py-2">
+                                <a href="{{ route('logout') }}" class="text-body ms-0">
+                                    <i class="me-2 icon-md" data-feather="log-out"></i>
+                                    <span>Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="list-unstyled p-1">
+                            <li class="dropdown-item py-2">
+                                <a href="{{ route('profile.index') }}" class="text-body ms-0">
+                                    <i class="me-2 icon-md" data-feather="user"></i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-item py-2">
+                                <a href="{{ route('toko.index') }}" class="text-body ms-0">
+                                    <i class="me-2 icon-md" data-feather="home"></i>
+                                    <span>Toko</span>
+                                </a>
+                            </li>
+                            {{-- <li class="dropdown-item py-2">
+                        <a href="javascript:;" class="text-body ms-0">
+                            <i class="me-2 icon-md" data-feather="edit"></i>
+                            <span>Edit Profile</span>
+                        </a>
                         </li>
-                    </ul>
+                        <li class="dropdown-item py-2">
+                        <a href="javascript:;" class="text-body ms-0">
+                            <i class="me-2 icon-md" data-feather="repeat"></i>
+                            <span>Switch User</span>
+                        </a>
+                        </li> --}}
+                            <li class="dropdown-item py-2">
+                                <a href="{{ route('logout') }}" class="text-body ms-0">
+                                    <i class="me-2 icon-md" data-feather="log-out"></i>
+                                    <span>Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
             </li>
         </ul>
