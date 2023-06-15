@@ -28,11 +28,11 @@ class ProfileController extends Controller
 
     public function toko()
     {
-        $id = Auth::user()->id;
-        $toko = Toko::select('tokos.id AS id_toko', 'tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo', 'users.id')->join('users', 'users.id', '=', 'tokos.id_user')->where('tokos.id_user', '=', $id)->get();
-        $id_toko = Toko::select('tokos.id')->where('tokos.id_user',$id)->value('tokos.id');
-        // dd($id_toko);
-        return view('pages.toko.index', compact('toko','id_toko'));
+        $id = Auth::user()->id_toko;
+        $toko = Toko::select('tokos.id', 'tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo')->where('tokos.id', '=', $id)->get();
+        $id_toko = Toko::select('tokos.id')->where('tokos.id', $id)->value('tokos.id');
+        // dd($id);
+        return view('pages.toko.index', compact('toko', 'id_toko'));
     }
 
     /**
@@ -62,9 +62,7 @@ class ProfileController extends Controller
         $users = Auth::user();
         $id = $users->id;
         $user = User::find($id);
-        // $image = $request->file('image')->store('profile');
-        // dd( $image);
-
+    
         if ($request->image == null) {
             $image = $users->photo;
         } else {
@@ -118,21 +116,8 @@ class ProfileController extends Controller
         //     'address' => 'required|string|min:3|max:255',
         //     // 'filephoto' => 'image|mimes:jpeg,jpg,png|max:2048',
         // ]);
-        // $id = Auth::user()->id;
-        // $toko = Toko::select('tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo', 'users.id')->join('users', 'users.id', '=', 'tokos.id_user')->where('tokos.id_user', '=', $id)->get();
-        // $image = $request->file('image')->store('toko');
 
-        // if ($request->image == null) {
-        // $image = $request->imageold;
-        // } else {
         $image = $request->file('image')->store('toko');
-        // $gambar_path = $request->imageold;
-        // if (Storage::exists($gambar_path)) {
-        // Storage::delete($gambar_path);
-        // }
-        // }
-
-        // if ($toko == null) {
         $status = Toko::create([
             'id_user' => Auth::user()->id,
             'name' => $request->name,
@@ -142,28 +127,10 @@ class ProfileController extends Controller
         ]);
 
         $lastid = $status->id;
-        // dd($lastid);
-        User::where('id' , auth::user()->id)->update([
+        User::where('id', auth::user()->id)->update([
             'id_toko' => $lastid,
         ]);
-        // } else {
-        // $status = Toko::where('id',$request->id_toko)->update([
-        // 'name' => $request->name,
-        // 'phone' => $request->phone,
-        // 'address' => $request->address,
-        // 'photo' => $image,
-        // ]);
-        // }
-        // $image = $request->file('image')->store('profile');
-        // dd( $image);
 
-
-        // $status = $user->update([
-        //     'name' => $request->name,
-        //     'phone' => $request->telp,
-        //     'address' => $request->address,
-        //     'photo' => $image,
-        // ]);
         if ($status) {
             request()->session()->flash('success', 'Toko successfully Created');
         } else {
@@ -180,10 +147,7 @@ class ProfileController extends Controller
         //     'address' => 'required|string|min:3|max:255',
         //     // 'filephoto' => 'image|mimes:jpeg,jpg,png|max:2048',
         // ]);
-        $id = Auth::user()->id;
-        $toko = Toko::select('tokos.id_user', 'tokos.name AS name', 'tokos.phone', 'tokos.address', 'tokos.photo', 'users.id')->join('users', 'users.id', '=', 'tokos.id_user')->where('tokos.id_user', '=', $id)->get();
-        // $image = $request->file('image')->store('toko');
-
+        $id = Auth::user()->id_toko;
         if ($request->image == null) {
             $image = $request->imageold;
         } else {
@@ -194,31 +158,13 @@ class ProfileController extends Controller
             }
         }
 
-        // if ($toko == null) {
-        //     $status = Toko::create([
-        //         'name' => $request->name,
-        //         'phone' => $request->phone,
-        //         'address' => $request->address,
-        //         'photo' => $image,
-        //     ]);
-        // } else {
-            $status = Toko::where('id', $request->id_toko)->update([
-                'name' => $request->name,
-                'phone' => $request->phone,
-                'address' => $request->address,
-                'photo' => $image,
-            ]);
-        // }
-        // $image = $request->file('image')->store('profile');
-        // dd( $image);
+        $status = Toko::where('id', $id)->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'photo' => $image,
+        ]);
 
-
-        // $status = $user->update([
-        //     'name' => $request->name,
-        //     'phone' => $request->telp,
-        //     'address' => $request->address,
-        //     'photo' => $image,
-        // ]);
         if ($status) {
             request()->session()->flash('success', 'Toko successfully updated');
         } else {
