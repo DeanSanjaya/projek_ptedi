@@ -14,7 +14,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Data Pemasok</h6>
+                        <h6 class="card-title">Data Barang</h6>
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">

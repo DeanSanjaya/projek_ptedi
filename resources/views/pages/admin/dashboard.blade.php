@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-12 col-xl-12 stretch-card">
                 <div class="row flex-grow-1">
-                    <div class="col-md-4 grid-margin stretch-card">
+                    <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-baseline">
@@ -35,14 +35,14 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h2 class="mb-2">
-                                           {{$user}}
+                                            {{ $user }}
                                         </h2>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 grid-margin stretch-card">
+                    <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-baseline">
@@ -51,23 +51,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <h2 class="mb-2">
-                                           {{$toko}}
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-baseline">
-                                    <h6 class="card-title mb-w">Karyawan</h6>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h2 class="mb-2">
-                                            {{-- Rp.  {{ number_format($pendapatan, 0, ',', '.') }} --}}
+                                            {{ $toko }}
                                         </h2>
                                     </div>
                                 </div>
@@ -81,7 +65,7 @@
         <div class="row">
             <div class="col-12 col-xl-12 stretch-card">
                 <div class="row flex-grow-1">
-                 
+
                     <div class="col-md-12  grid-margin stretch-card">
                         <div class="card overflow-hidden">
                             <div class="card-body">
@@ -89,7 +73,7 @@
                                     <h6 class="card-title mb-3">Profile</h6>
                                 </div>
                                 <div class="d-flex justify-content-center ">
-                                  
+
                                     <div class="mb-3">
                                         <img src="{{ asset('storage/' . auth::user()->photo) }}"
                                             class="rounded-circle wd-200" alt="user">
