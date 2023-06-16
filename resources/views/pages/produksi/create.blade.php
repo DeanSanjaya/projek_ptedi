@@ -74,8 +74,7 @@
                                                 <option value="">PILIH BAHAN</option>
                                                 @foreach ($bahans as $bahan)
                                                     <option value="{{ $bahan->name }}" id_kat="{{ $bahan->id }}"
-                                                        stok="{{ $bahan->stok }}"
-                                                        name="{{$bahan->name}}"
+                                                        stok="{{ $bahan->stok }}" name="{{ $bahan->name }}"
                                                         stok_deskripsi="{{ $bahan->stok_deskripsi }}"
                                                         jumlah_besar="{{ $bahan->jumlah_besar }}"
                                                         jumlah_besar_deskripsi="{{ $bahan->jumlah_besar_deskripsi }}"
@@ -91,31 +90,36 @@
                                             <input type="text" name="stokgudang[]" id="stokgudang[]"
                                                 class="form-control">
                                         </div>
-                                        <div class="col-4"> 
-                                            <label for="jumlah" class="form-label" >Jumlah Yang
+                                        <div class="col-4">
+                                            <label for="jumlah" class="form-label">Jumlah Yang
                                                 Dibutuhkan</label>
                                             <input type="text" class="form-control" name="jumlah[]" id="jumlah[]">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="formbahan2">
-
-                            </div>
+                            <div id="formbahan2"></div>
                             {{-- <button onclick="myFunction()">Copy</button> --}}
                             {{-- <p>Click "Copy" to copy the "demo" element, including all its attributes and child elements, and
                                 append it to the document.</p> --}}
                             {{-- <button type="button" class="" id="tambahbahan">+</button> --}}
-                            <button onclick="duplicate(this)" type="button">Duplicate</button>
-                            <button onclick="remove(this)" type="button">Remove</button>
-                            <input class="btn btn-primary" type="submit" value="Submit">
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-primary" onclick="duplicate(this)"
+                                    type="button">Duplicate</button>
+                                <button class="btn btn-primary" onclick="remove(this)" type="button">Remove</button>
+                                <input class="btn btn-primary" type="submit" value="Submit">
+                            </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{-- ! Swett Alert CDN --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    {{-- ! Swett Alert CDN --}}
+
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
     <script>
@@ -125,7 +129,7 @@
                 var beratsatuan = $("#merk option:selected").attr("beratsatuan");
                 $("#beratsatuan").val(beratsatuan);
             })
-            $('select[id="bahan[]"]').on('change', function() {  //coba en an      
+            $('select[id="bahan[]"]').on('change', function() { //coba en an      
                 var jumlah_besar = $("#bahan option:selected").attr("jumlah_besar");
                 var jumlah_kecil = $("#bahan option:selected").attr("jumlah_kecil");
                 // $("#stokgudang").val(jumlah_besar)*val(jumlah_kecil);
@@ -136,25 +140,41 @@
         })
     </script>
     <script>
+        let counter = 1;
+
         // $(document).ready(function() {
         //     $("#tambahbahan").click(function() {
         //         const node = document.getElementById("formbahan").lastChild;
         //         const clone = node.cloneNode(true);
         //         document.getElementById("formbahan").appendChild(clone);
         //     });
-
         // })
 
-        function remove(button) {
-            const node = document.getElementById("formbahan2");
-            node.parentNode.removeChild(node);
-            // document.getElementById("formbahan")
+        function duplicate(button) {
+            counter += 1;
+            if (counter >= 1) {
+                const node = document.getElementById("formbahan");
+                const clone = node.cloneNode(true);
+                document.getElementById("formbahan2").appendChild(clone);
+
+            }
         }
 
-        function duplicate(button) {
-            const node = document.getElementById("formbahan");
-            const clone = node.cloneNode(true);
-            document.getElementById("formbahan2").appendChild(clone);
+        function remove(button) {
+            counter -= 1;
+            if (counter >= 1) {
+                const node = document.getElementById("formbahan");
+                node.parentNode.removeChild(node);
+                // document.getElementById("formbahan")
+            } else {
+                counter += 1;
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Tidak bisa menghapus lagi',
+                    icon: 'error',
+                    confirmButtonText: 'Confirm'
+                })
+            }
         }
     </script>
 @endsection
