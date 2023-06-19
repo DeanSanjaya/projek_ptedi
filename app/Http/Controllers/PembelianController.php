@@ -56,13 +56,18 @@ class PembelianController extends Controller
         //     'address' => 'required|string|min:3|max:255',
         //     'email' => 'email|min:3|max:255',
         // ]);
+        $pemasok = $request->id_pemasok;
+        if ($pemasok === null) {
+            request()->session()->flash('error', 'Error occurred, Please try again!');
+            return redirect()->route('pembelian.index');
+        }
         $user = Auth::user();
 
         $status = Pembelian::create([
             'id_pemasok'    => $request->id_pemasok,
             'id_kat'        => $request->kategori,
             'id_brng'       => $request->merk,
-            'id_toko'       => auth::user()->id_toko,
+            'id_toko'       => $user->id_toko,
             'jumlah'        => $request->jumlah,
             'deskripsijumlah' => $request->wadah,
             'berat_volume'  => $request->berat,
@@ -82,7 +87,6 @@ class PembelianController extends Controller
             'updated_by'             => $user->name,
         ]);
 
-        // dd($status);
 
         if ($status && $stok) {
             request()->session()->flash('success', 'successfully added Pembelian');

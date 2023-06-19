@@ -20,20 +20,6 @@ class KasirController extends Controller
     public function search_barang($nama)
     {
         $id_toko = Auth::user()->id_toko;
-
-        // $data = Kategori::orderBy('name', 'ASC')->get();
-
-        // $this->validate($request, [
-        //     'kate' => 'string|min:3|max:255|required',
-        // ]);
-        // $name = $request->kategori;
-        // $kategori = DB::table('kategoris')->where('name', 'like', "%" . $request . "%")->get();
-        // return response()->json(['name' => $data->name, 'id' => $data->id], 200);
-
-        // $data = Kategori::select("name")
-        //     ->where("name", "LIKE", "%{$request->query}%")
-        //     ->get();
-
         $data = Barang::Select('id', 'name', 'harga_jual')->where('name', 'like', "%" . $nama . "%")->where('id_toko', $id_toko)->where('harga_jual', '>', 0)->orderBy('name', 'ASC')->get();
         return response()->json($data);
     }
@@ -47,9 +33,6 @@ class KasirController extends Controller
 
     public function store(Request $request)
     {
-        // $data = $request->all();
-        // dd($data);
-
         $user = Auth::user();
         $count = count($request->item);
         $status = Penjualan::create([
@@ -62,6 +45,7 @@ class KasirController extends Controller
 
         ]);
 
+        // $stoklama = Barang::where('id', $request->merk)->select('stok')->value('stok');
 
         for ($i = 0; $i < $count; $i++) {
             ItemPenjualan::create([
