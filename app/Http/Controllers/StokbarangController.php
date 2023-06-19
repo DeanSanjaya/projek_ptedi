@@ -147,14 +147,16 @@ class StokbarangController extends Controller
 
         $namabaru = $request->name;
         $namalama = DB::table('kategoris')->where('name', 'like', "%" . $namabaru . "%")->get();
-        // dd($namalama);
 
         if (count($namalama) > 0) {
             request()->session()->flash('error', 'Name is Exist');
             return redirect()->route('barang.index');
         } else {
-            $data = $request->all();
-            $status = Kategori::create($data);
+            $status = Kategori::create([
+                'name' => $request->name,
+                'id_toko' => auth::user()->id_toko,
+                'created_by' => auth::user()->name,
+            ]);
             if ($status) {
                 request()->session()->flash('success', 'Kategori successfully added');
             } else {
@@ -175,13 +177,10 @@ class StokbarangController extends Controller
 
         $status = Barang::create([
             'id_kat' => $request->id_kat,
-            'id_toko' => auth::user()->id_toko,
+            'id_toko' => $user->id_toko,
             'name' => $request->name,
-            'berat_volume' => $request->volume,
             'updated_by' => $user->name,
         ]);
-        //     $data = $request->all();
-        // dd($request->berat_volume);
 
         if ($status) {
             request()->session()->flash('success', 'Merk Barang successfully added');
@@ -203,13 +202,11 @@ class StokbarangController extends Controller
         // dd($id_kat);
         if ($id_kat == null) {
             $id_kat = $request->kategoriold;
-
         }
         $status = Barang::where('id', $id)->update([
             'id_kat' => $id_kat,
             'name' => $request->name,
-            'berat_volume' => $request->volume,
-            // 'keterangan' => $request->keterangan,
+            // 'berat_volume' => $request->volume,
         ]);
         if ($status) {
             request()->session()->flash('success', 'Merk Barang successfully edited');
@@ -227,12 +224,6 @@ class StokbarangController extends Controller
 
         $id = $request->id;
         $namabaru = $request->name;
-        // $namalama = DB::table('kategoris')->where('name', 'like', "%" . $namabaru . "%")->get();
-
-        // if (count($namalama) > 0) {
-        //     request()->session()->flash('error', 'Name is Exist');
-        //     return redirect()->route('barang.index');
-        // } else {
         $status = Kategori::where('id', $id)->update([
             'name' => $namabaru,
         ]);

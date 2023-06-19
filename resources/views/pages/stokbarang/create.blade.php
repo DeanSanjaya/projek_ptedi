@@ -49,21 +49,21 @@
                             <div class="mb-3">
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <label for="berat_volume" id="berat_volume2" class="form-label">Berat/Isi/Volume Satu Wadah</label>
                                             <input id="berat_volume" class="form-control" readonly name="berat_volume" type="text">
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <label for="desk_b_v" class="form-label" id="berat"> Deskripsi Berat/Isi/Volume Satu
                                                 Wadah</label>
                                             <input type="text" class="form-control" readonly name="desk_b_v" id="desk_b_v">
 
                                         </div>
-                                        <div class="col-4">
+                                        {{-- <div class="col-4">
                                             <label for="beratsatuan" class="form-label" id="berat">Berat/Volume Satuan
                                                 Barang</label>
                                             <input type="text" class="form-control" readonly name="beratsatuan" id="beratsatuan">
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

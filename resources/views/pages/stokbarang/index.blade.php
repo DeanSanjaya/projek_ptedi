@@ -59,11 +59,7 @@
                                             <div class="modal-body">
                                                 <form action="{{ route('kategori_store') }}" method="post">
                                                     @csrf
-                                                    {{-- @method('PUT') --}}
-                                                    {{-- @method('delete')
-                                                                <p>Delete <strong>{{ $pemasok->name }}</strong> </p> --}}
                                                     <div class="mb-3">
-                                                        <input type="hidden" name="created_by" id="created" value="{{Auth::user()->name}}">
                                                         <label for="name" class="form-label">Nama Kategori :</label>
                                                         <input type="text" class="form-control" id="name"
                                                             name="name" value="{{ old('name') }}" required autofocus>
@@ -210,7 +206,6 @@
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="btn-Close">
-                                                    {{-- <span aria-hidden="true">&times;</span> --}}
                                                 </button>
                                             </div>
                                             <div class="modal-body">
@@ -218,7 +213,6 @@
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="kategori" class="form-label">Kategori :</label>
-                                                        {{-- <input type="text" class="form-control" id="kategori" name="kategori"> --}}
                                                         <select for="kategori"
                                                             onmousedown="if(this.options.length>3){this.size=3;}"
                                                             onchange='this.size=0;' name="id_kat" id="id_kat"
@@ -238,11 +232,11 @@
                                                             name="name" required>
                                                     </div>
 
-                                                    <div class="mb-3">
+                                                    {{-- <div class="mb-3">
                                                         <label for="volume" class="form-label">Volume :</label>
                                                         <input type="text" class="form-control" id="volume"
                                                             name="volume" required>
-                                                    </div>
+                                                    </div> --}}
 
                                             </div>
                                             <div class="modal-footer">
@@ -454,7 +448,7 @@
                                                 <th>No.</th>
                                                 <th>Nama/Merk</th>
                                                 <th>Stock</th>
-                                                <th>Berat</th>
+                                                {{-- <th>Berat</th> --}}
                                                 <th>Harga Jual</th>
 
                                             </tr>
@@ -466,7 +460,7 @@
                                                     <th>{{ $no }}</th>
                                                     <td>{{ $stock->name }}</td>
                                                     <td>{{ $stock->stok }} {{ $stock->stok_deskripsi }}</td>
-                                                    <td>{{ $stock->berat_volume }}</td>
+                                                    {{-- <td>{{ $stock->berat_volume }}</td> --}}
                                                     <td> Rp. {{ number_format($stock->harga_jual, 0, ',', '.') }}</td>
                                                 </tr>
                                                 @php($no++)

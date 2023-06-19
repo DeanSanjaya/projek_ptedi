@@ -68,20 +68,21 @@
                                         <input id="email" class="form-control" name="email" type="email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="kategori" class="form-label">kategori</label>
-                                        <select class="js-example-basic-single form-select" name="kategori" id="kategori"
-                                            data-width="100%">
-                                            <option value="">PILIH KATEGORI</option>
-                                            @foreach ($kategoris as $kategori)
-                                                <option value="{{ $kategori->id }}" id_kat="{{ $kategori->id }}">
-                                                    {{ $kategori->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
                                         <div class="col-12">
                                             <div class="row">
+                                                <div class="col-6">
+                                                    <label for="kategori" class="form-label">kategori</label>
+                                                    <select class="js-example-basic-single form-select" name="kategori"
+                                                        id="kategori" data-width="100%">
+                                                        <option value="">PILIH KATEGORI</option>
+                                                        @foreach ($kategoris as $kategori)
+                                                            <option value="{{ $kategori->id }}"
+                                                                id_kat="{{ $kategori->id }}">
+                                                                {{ $kategori->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                                 <div class="col-6">
                                                     <label for="jenis-barang" class="form-label">Merk Barang</label>
                                                     <select id="merk" class="merk form-select js-example-basic-single"
@@ -89,11 +90,11 @@
                                                         <option value="0">PILIH MERK</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-6">
+                                                {{-- <div class="col-6">
                                                     <label for="jenis-barang" class="form-label">Berat Satuan</label>
                                                     <input type="text" readonly class="form-control" id="bsat"
                                                         name="bsat">
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -104,18 +105,18 @@
                                                     <div class="row">
                                                         <label for="jumlah" class="form-label">Jumlah</label>
                                                         <div class="col-6">
-                                                            <input id="jumlah" class="form-control" name="jumlah"
-                                                                type="number">
+                                                            <input id="jumlah" class="form-control"
+                                                                name="jumlah" type="number">
                                                         </div>
                                                         <div class="col-6">
                                                             <select class="form-select" name="wadah" id="wadah">
                                                                 <option value="">DESKRIPSI</option>
-                                                                <option value="pack">pack</option>
-                                                                <option value="toples">toples</option>
+                                                                {{-- <option value="pack">pack</option>
+                                                                <option value="toples">toples</option> --}}
                                                                 <option value="kardus">kardus</option>
                                                                 <option value="karung">karung</option>
-                                                                <option value="galon">galon</option>
-                                                                <option value="tangki">tangki</option>
+                                                                {{-- <option value="galon">galon</option>
+                                                                <option value="tangki">tangki</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -133,13 +134,15 @@
                                                             <select class="form-select" name="satuanberat"
                                                                 id="satuanberat">
                                                                 <option value="">DESKRIPSI</option>
-                                                                <option value="kg">kg</option>
-                                                                <option value="g">gram</option>
-                                                                <option value="mg">mg</option>
-                                                                <option value="ons">ons</option>
-                                                                <option value="pack">pack</option>
-                                                                <option value="pcs">pcs</option>
-                                                                <option value="liter">liter</option>
+                                                                <option value="kg" style="display: none"
+                                                                    id="kg">kg</option>
+                                                                {{-- <option value="g">gram</option> --}}
+                                                                {{-- <option value="mg">mg</option> --}}
+                                                                {{-- <option value="ons">ons</option> --}}
+                                                                {{-- <option value="pack">pack</option> --}}
+                                                                <option value="pcs" style="display: none"
+                                                                    id="pcs">pcs</option>
+                                                                {{-- <option value="liter">liter</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -151,196 +154,19 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <label for="harga" id="harga" class="form-label">Harga</label>
-                                                <input id="harga" class="form-control" name="harga"
-                                                    type="text">
+                                                <input id="uang" class="form-control harga" name="harga"
+                                                    type="number">
                                             </div>
                                             <div class="col-6">
                                                 <label for="total" class="form-label">Total Harga Beli</label>
-                                                <input id="total" class="form-control" name="total"
-                                                    type="text">
+                                                <input id="total" class="form-control total" name="total"
+                                                    type="number">
                                             </div>
                                         </div>
                                     </div>
 
                                     <input class="btn btn-primary" type="submit" value="Submit">
                                 </form>
-                            </div>
-
-                            {{-- SECTION JUAL --}}
-                            <div class="tab-pane fade" id="jual" role="tabpanel" aria-labelledby="jual-tab">
-                                <div class="mb-3">
-                                    <label class="form-label">Pemasok jual</label>
-                                    <select class="js-example-basic-single form-select" name="pemasokjual"
-                                        id="pemasokjual" data-width="100%">
-                                        <option value="">Pilih Pemasok</option>
-                                        @foreach ($pemasoks as $pemasok)
-                                            <option value="{{ $pemasok->id }}" phone="{{ $pemasok->phone }}"
-                                                address="{{ $pemasok->address }}" email="{{ $pemasok->email }}"
-                                                nama_pemasok="{{ $pemasok->name }}">{{ $pemasok->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Nama</label>
-                                    <input id="nama_pemasokjual" class="form-control" name="nama_pemasokjual"
-                                        type="text">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alamat" class="form-label">Alamat</label>
-                                    <input id="alamat_pemasokjual" class="form-control" name="alamat_pemasokjual"
-                                        type="text">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Nomor Telepon</label>
-                                    <input id="phonejual" class="form-control" name="phonejual" type="text">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input id="emailjual" class="form-control" name="emailjual" type="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="kategori" class="form-label">kategori</label>
-                                    <select class="js-example-basic-single form-select" name="kategori" id="kategori"
-                                        data-width="100%">
-                                        <option value="">PILIH KATEGORI</option>
-                                        @foreach ($kategoris as $kategori)
-                                            <option value="{{ $kategori->id }}" id_kat="{{ $kategori->id }}">
-                                                {{ $kategori->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    {{-- <input id="barang" class="form-control" name="barang" type="text"> --}}
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="jenis-barang" class="form-label">Merk Barang</label>
-                                    <select id="merk" class="merk form-select js-example-basic-single"
-                                        name="merk">
-                                        <option value="0">Pilih</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="row">
-                                                    <label for="jumlah" class="form-label">Jumlah Total</label>
-                                                    <div class="col-6">
-                                                        <input id="jumlah" class="form-control" name="jumlah"
-                                                            type="number">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <select class="form-select" name="wadahjual" id="wadahjual">
-                                                            <option value="">DESKRIPSI</option>
-                                                            <option value="toples">toples</option>
-                                                            <option value="kardus">kardus</option>
-                                                            <option value="karung">karung</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="" class="form-label" name="berat"
-                                                    id="berat">Berat Total</label>
-
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <input id="berat" class="form-control" name="berat"
-                                                            type="number">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <select class="form-select" name="satuanberat" id="satuanberat">
-                                                            <option value="">DESKRIPSI</option>
-                                                            <option value="kg">kg</option>
-                                                            <option value="g">g</option>
-                                                            <option value="mg">mg</option>
-                                                            <option value="ons">ons</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="col-12">
-
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="row">
-                                                    <label for="jumlah" id="jumlahisijual" class="form-label">Jumlah
-                                                        Isi Satuan Per</label>
-                                                    <div class="col-6">
-                                                        <input id="jumlahisijual" class="form-control"
-                                                            name="jumlahisijual" type="number">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <select class="form-select" name="wadah" id="wadah">
-                                                            <option value="">DESKRIPSI</option>
-                                                            <option value="pcs">pcs</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="" class="form-label" name="berat"
-                                                    id="berat">Berat Satuan Per pcs</label>
-
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <input id="berat" class="form-control" name="berat"
-                                                            type="number">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <select class="form-select" name="satuanberat" id="satuanberat">
-                                                            <option value="">DESKRIPSI</option>
-                                                            <option value="kg">kg</option>
-                                                            <option value="g">g</option>
-                                                            <option value="mg">mg</option>
-                                                            <option value="ons">ons</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label for="hargabeli" id="hargabeli" class="form-label">Harga Beli Satuan
-                                                Per</label>
-                                            <input id="hargabeli" class="form-control" name="hargabeli" type="text">
-                                        </div>
-                                        <div class="col-6">
-                                            <label for="total" class="form-label">Total Harga Beli</label>
-                                            <input id="total" class="form-control" name="total" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <input class="btn btn-primary" type="submit" value="Submit">
-                           
-
-                                <div class="mb-3">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label for="harga" class="form-label">Harga Jual Satuan Per pcs</label>
-                                            <input id="harga" class="form-control" name="harga" type="text">
-                                        </div>
-                                        <div class="col-6">
-                                            <label for="total" id="hargajual" class="form-label">Harga Jual</label>
-                                            <input id="total" class="form-control" name="total" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <input class="btn btn-primary" type="submit" value="Submit">
                             </div>
 
                             {{-- SECTION RIWAYAT --}}
@@ -373,11 +199,6 @@
                                                     <td>Rp. {{ number_format($pembelian->hargabeli, 0, ',', '.') }}</td>
                                                     <td>Rp. {{ number_format($pembelian->totalbeli, 0, ',', '.') }}</td>
                                                     <td>
-                                                        {{-- <button type="button" class="btn btn-primary btn-icon"
-                                                            data-bs-target="#modalbarangedit{{ $pembelian->id }}"
-                                                            data-bs-toggle="modal">
-                                                            <i data-feather="edit-2"></i>
-                                                        </button> --}}
                                                         <button type="button" class="btn btn-danger btn-icon"
                                                             data-bs-target="#modalbaranghapus{{ $pembelian->id }}"
                                                             data-bs-toggle="modal">
@@ -409,7 +230,8 @@
                                                                     <p>Delete <strong>{{ $pembelian->barangname }}</strong>
                                                                     </p>
                                                                     <input type="hidden" name="jumlah_besar"
-                                                                        id="jumlah_besar" value="{{ $pembelian->jumlah }}">
+                                                                        id="jumlah_besar"
+                                                                        value="{{ $pembelian->jumlah }}">
 
 
                                                             </div>
@@ -467,34 +289,7 @@
             })
         })
     </script>
-    {{-- <script type="text/javascript">
-        $(document).ready(function() {
-            $('#kategori').change(function() {
-                $('.js-example-basic-single').select2();
-                var id = $(this).val();
-                $.ajax({
-                    url: "/kategori_ip",
-                    method: "post",
-                    data: {
-                        id: id
-                    },
-                    async: false,
-                    dataType: 'json',
-                    success: function(data) {
-                        var html = '';
-                        var i;
-                        for (i = 0; i < data.length; i++) {
-                            html += '<option value="' + data[i].id + '" >' + data[i].name +
-                                '</option>';
-                        }
-                        $('.merk').html(html);
 
-                    }
-                });
-
-            });
-        });
-    </script> --}}
 
     <script>
         $(document).ready(function() {
@@ -517,7 +312,8 @@
                             // jika ada kita looping dengan each
                             $.each(data, function(key, value) {
                                 // perhtikan dimana kita akan menampilkan data select nya, di sini saya memberi name select kota adalah kota_id
-                                $('select[name="merk"]').append('<option>PILIH MERK</option> <option value="' +
+                                $('select[name="merk"]').append(
+                                    ' <option value="' +
                                     value.id + '" berat_volume="' + value
                                     .berat_volume + '" >' + ' ' + value.name +
                                     '</option>');
@@ -541,11 +337,21 @@
         $(document).ready(function() {
             $('select[name="wadah"]').on('change', function() {
                 var wadah = $("#wadah option:selected").attr("value");
+                var desk = $("#wadah option:selected").attr("desk");
                 document.getElementById("harga").innerHTML = 'Harga setiap 1 ' + wadah;
                 document.getElementById("berat").innerHTML = 'Berat/Isi/Volume setiap 1 ' + wadah;
                 // $("#isi").text(wadah);
                 // console.log(wadah);
-
+                if (wadah === "kardus") {
+                    document.getElementById("pcs").style.display = "block";
+                    document.getElementById("kg").style.display = "none";
+                } else if (wadah === "karung") {
+                    document.getElementById("kg").style.display = "block";
+                    document.getElementById("pcs").style.display = "none";
+                } else {
+                    document.getElementById("kg").style.display = "none";
+                    document.getElementById("pcs").style.display = "none";
+                }
             })
 
             $('select[name="wadahjual"]').on('change', function() {
@@ -558,5 +364,16 @@
 
             })
         })
+
+        $(document).on('keyup', ".harga", function() {
+            var harga = $("#uang").val();
+            var jumlah = $("#jumlah").val();
+            var total = jumlah * harga;
+            $("#total").val(total);
+            console.log(harga);
+            // console.log(total);
+            console.log(jumlah);
+        })
     </script>
+    <script></script>
 @endsection
