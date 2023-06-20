@@ -19,7 +19,7 @@
                             <div class="mb-3">
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-6"> <label for="merk" class="form-label">BARANG</label>
+                                        <div class="col-12"> <label for="merk" class="form-label">BARANG</label>
                                             <select class="merk form-select js-example-basic-single" name="merk"
                                                 id="merk" data-width="100%">
                                                 <option value="">PILIH BARANG</option>
@@ -30,11 +30,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-6"><label for="beratsatuan" class="form-label"
+                                        {{-- <div class="col-6"><label for="beratsatuan" class="form-label"
                                                 id="berat">Berat/Volume Satuan Barang</label>
                                             <input type="text" class="form-control" readonly name="beratsatuan"
                                                 id="beratsatuan">
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
 

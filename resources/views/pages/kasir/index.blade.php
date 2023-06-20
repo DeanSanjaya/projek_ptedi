@@ -42,26 +42,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody id="pencarian">
-                                                    <tr>
-                                                        {{-- <th>1</th> --}}
-                                                        {{-- <td>testing</td>
-                                                        <td>Rp. 5.0000</td>
-                                                        <td> <button type="button" class="btn btn-primary btn-icon">
-
-                                                                <i data-feather="plus"></i>
-                                                            </button>
-                                                        </td> --}}
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <th>2</th> --}}
-                                                        {{-- <td>testing</td>
-                                                        <td>Rp. 5.0000</td>
-                                                        <td> <button type="button" class="btn btn-primary btn-icon">
-
-                                                                <i data-feather="plus"></i>
-                                                            </button>
-                                                        </td> --}}
-                                                    </tr>
+                                                   
 
                                                 </tbody>
                                             </table>
@@ -224,7 +205,7 @@
                                 '" class="subtotal"> <input type="hidden" name="nama_item[]" value="' +
                                 value.name + '" > <input type="hidden" name="id_barang[]" value="' +
                                 value.id + '"> <input type="hidden" name="harga[]" value="' + value
-                                .harga_jual + '"> </td> <td id="subtotal' +
+                                .harga_jual + '"> <input type="hidden" name="stok[]" value="'+value.stok+'"  </td> <td id="subtotal' +
                                 value.id + '"> SUBTOTAL  </td> </tr>'
                             );
                             feather.replace()

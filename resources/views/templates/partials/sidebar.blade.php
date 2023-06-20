@@ -73,13 +73,13 @@
                         </a>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#kasir" role="button" aria-expanded="false"
+                        <a class="nav-link" data-bs-toggle="collapse" href="#karyawan" role="button" aria-expanded="false"
                             aria-controls="kasir">
-                            <i class="link-icon" data-feather="shopping-cart"></i>
+                            <i class="link-icon" data-feather="users"></i>
                             <span class="link-title">Karyawan</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="kasir">
+                        <div class="collapse" id="karyawan">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     <a href="{{ route('karyawan.data') }}" class="nav-link">Data Karyawan</a>
@@ -101,7 +101,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#kasir" role="button" aria-expanded="false"
                         aria-controls="kasir">
-                        <i class="link-icon" data-feather="shopping-cart"></i>
+                        <i class="link-icon" data-feather="dollar-sign"></i>
                         <span class="link-title">Penjualan</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>

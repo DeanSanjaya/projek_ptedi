@@ -27,7 +27,7 @@ class KasirController extends Controller
     public function detail_barang($id)
     {
         $id_toko = Auth::user()->id_toko;
-        $data = Barang::Select('id', 'name', 'harga_jual')->where('id', $id)->where('id_toko', $id_toko)->where('harga_jual', '>', 0)->orderBy('name', 'ASC')->get();
+        $data = Barang::Select('id', 'name', 'harga_jual','stok')->where('id', $id)->where('id_toko', $id_toko)->where('harga_jual', '>', 0)->orderBy('name', 'ASC')->get();
         return response()->json($data);
     }
 
@@ -56,6 +56,11 @@ class KasirController extends Controller
                 'harga'         => $request->harga[$i],
                 'subtotal'      => $request->subtotall[$i],
             ]);
+
+            Barang::where('id', $request->id_barang[$i])->update([
+                'stok' => $request->stok[$i] - $request->item[$i],
+            ]);
+
         }
 
         if ($status) {
