@@ -105,8 +105,8 @@
                             {{-- <button type="button" class="" id="tambahbahan">+</button> --}}
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-primary" onclick="duplicate(this)"
-                                    type="button">Duplicate</button>
-                                <button class="btn btn-primary" onclick="remove(this)" type="button">Remove</button>
+                                    type="button">Tambah</button>
+                                <button class="btn btn-danger" onclick="remove(this)" type="button">Hapus</button>
                                 <input class="btn btn-primary" type="submit" value="Submit">
                             </div>
                         </form>
@@ -129,7 +129,7 @@
                 var beratsatuan = $("#merk option:selected").attr("beratsatuan");
                 $("#beratsatuan").val(beratsatuan);
             })
-            $('select[id="bahan[]"]').on('change', function() { //coba en an      
+            $('select[id="bahan[]"]').on('change', function() {      
                 var jumlah_besar = $("#bahan option:selected").attr("jumlah_besar");
                 var jumlah_kecil = $("#bahan option:selected").attr("jumlah_kecil");
                 // $("#stokgudang").val(jumlah_besar)*val(jumlah_kecil);

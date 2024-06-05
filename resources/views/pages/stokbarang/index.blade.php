@@ -300,7 +300,7 @@
                                                                     @csrf
                                                                     <p>Delete <strong>{{ $barang->barangname }}</strong>
                                                                     </p>
-                                                                    
+
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-light"
@@ -367,11 +367,11 @@
                                                                         @endforeach
                                                                     </select>
 
-                                                                    <label for="" class="form-label mt-1">Volume
-                                                                        :</label>
-                                                                    <input type="text" class="form-control"
+                                                                    {{-- <label for="" class="form-label mt-1">Volume
+                                                                        :</label> --}}
+                                                                    {{-- <input type="text" class="form-control"
                                                                         name="volume" id="volume"
-                                                                        value="{{ $barang->volume }}">
+                                                                        value="{{ $barang->volume }}"> --}}
 
                                                                     {{-- <label for=""
                                                                         class="form-label mt-1">Keterangan
@@ -423,8 +423,10 @@
                                                     {{-- <td>{{ $gudang->pemasokname }}</td> --}}
                                                     <td>{{ $gudang->kategoriname }}</td>
                                                     <td>{{ $gudang->barangname }}</td>
-                                                    <td>{{ $gudang->jumlah_besar }} {{ $gudang->jumlah_besar_deskripsi }}</td>
-                                                    <td>{{ $gudang->jumlah_kecil }} {{ $gudang->jumlah_kecil_deskripsi }}</td>
+                                                    <td>{{ $gudang->jumlah_besar }} {{ $gudang->jumlah_besar_deskripsi }}
+                                                    </td>
+                                                    <td>{{ $gudang->jumlah_kecil }} {{ $gudang->jumlah_kecil_deskripsi }}
+                                                    </td>
                                                     <td>{{ $gudang->jumlah_besar * $gudang->jumlah_kecil }}
                                                         {{ $gudang->jumlah_kecil_deskripsi }}</td>
                                                 </tr>
